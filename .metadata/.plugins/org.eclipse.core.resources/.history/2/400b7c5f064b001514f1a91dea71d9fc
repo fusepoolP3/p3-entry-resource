@@ -1,0 +1,10 @@
+package eu.fusepool.p3.entry;
+
+import org.osgi.service.component.annotations.Component;
+
+
+
+@Component(service = Object.class, property = "javax.ws.rs=true")
+public class RootResource {
+
+}

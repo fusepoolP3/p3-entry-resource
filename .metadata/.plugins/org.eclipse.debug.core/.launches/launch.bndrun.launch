@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="bndtools.launch">
+<booleanAttribute key="clean" value="true"/>
+<booleanAttribute key="dynamicBundles" value="true"/>
+<stringAttribute key="launchTarget" value="entry/launch.bndrun"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/entry"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="entry"/>
+</launchConfiguration>

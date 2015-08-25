@@ -1,0 +1,267 @@
+!SESSION 2015-08-25 09:24:36.620 -----------------------------------------------
+eclipse.buildId=4.5.0.I20150603-2000
+java.version=1.8.0_45-internal
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/reto/workspaces/t5 -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 4 368 2015-08-25 10:32:10.890
+!MESSAGE Resource '/cnf/localrepo/osgi.cmpn' does not exist.
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:09.401
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:09.788
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:10.382
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:10.655
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:11.016
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:11.374
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:11.662
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:11.986
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:12.262
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:12.629
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:13.125
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:13.439
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:13.867
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:14.156
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:14.695
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:15.022
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:15.472
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:15.793
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:16.121
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:16.411
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:16.953
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:17.681
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:18.054
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:18.092
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:18.482
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:18.541
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:19.030
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:19.101
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:19.613
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:19.715
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:19.793
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:19.870
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:20.335
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:20.398
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:20.757
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:20.790
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:21.067
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:21.112
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:21.465
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:21.496
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:21.841
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:21.898
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:22.609
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:22.653
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:23.228
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:23.266
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:23.838
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:23.863
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:24.432
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:24.467
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:24.987
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:25.014
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:25.546
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:25.580
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:26.203
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:26.223
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:26.761
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:26.815
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:27.296
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:27.337
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:27.878
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:27.904
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:28.371
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:28.403
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:29.051
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.platform.graphprovider.content/org.apache.clerezza.platform.graphprovider.content-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 2 0 2015-08-25 11:00:29.089
+!MESSAGE Could not index /home/reto/workspaces/t5/cnf/localrepo/org.apache.clerezza.rdf.jena.tdb.storage/org.apache.clerezza.rdf.jena.tdb.storage-1.0.0.jar, skipped (Cannot determine scalar type of empty collection.).
+
+!ENTRY bndtools.core 4 0 2015-08-25 11:00:29.522
+!MESSAGE Failed to install one or more bundles
+!SUBENTRY 1 bndtools.core 4 0 2015-08-25 11:00:29.522
+!MESSAGE Failed to add JAR to repository: /tmp/jars/json-20070829.jar
+!STACK 0
+java.lang.IllegalArgumentException: Jar does not have a symbolic name
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.putArtifact(LocalIndexedRepo.java:237)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.put(LocalIndexedRepo.java:323)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.performFinishAddFiles(AddFilesToRepositoryWizard.java:104)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.access$100(AddFilesToRepositoryWizard.java:30)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard$2.runInWorkspace(AddFilesToRepositoryWizard.java:68)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 bndtools.core 4 0 2015-08-25 11:00:29.523
+!MESSAGE Failed to add JAR to repository: /tmp/jars/linked-data-launcher-1.0.1-SNAPSHOT.jar
+!STACK 0
+java.lang.IllegalArgumentException: Jar does not have a symbolic name
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.putArtifact(LocalIndexedRepo.java:237)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.put(LocalIndexedRepo.java:323)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.performFinishAddFiles(AddFilesToRepositoryWizard.java:104)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.access$100(AddFilesToRepositoryWizard.java:30)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard$2.runInWorkspace(AddFilesToRepositoryWizard.java:68)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 bndtools.core 4 0 2015-08-25 11:00:29.523
+!MESSAGE Failed to add JAR to repository: /tmp/jars/linked-data-launcher-1.0.1-SNAPSHOT-sources.jar
+!STACK 0
+java.lang.IllegalArgumentException: Jar does not have a symbolic name
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.putArtifact(LocalIndexedRepo.java:237)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.put(LocalIndexedRepo.java:323)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.performFinishAddFiles(AddFilesToRepositoryWizard.java:104)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.access$100(AddFilesToRepositoryWizard.java:30)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard$2.runInWorkspace(AddFilesToRepositoryWizard.java:68)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 bndtools.core 4 0 2015-08-25 11:00:29.523
+!MESSAGE Failed to add JAR to repository: /tmp/jars/original-linked-data-launcher-1.0.1-SNAPSHOT.jar
+!STACK 0
+java.lang.IllegalArgumentException: Jar does not have a symbolic name
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.putArtifact(LocalIndexedRepo.java:237)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.put(LocalIndexedRepo.java:323)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.performFinishAddFiles(AddFilesToRepositoryWizard.java:104)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.access$100(AddFilesToRepositoryWizard.java:30)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard$2.runInWorkspace(AddFilesToRepositoryWizard.java:68)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.jobs 2 2 2015-08-25 11:13:16.726
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.bndtools.core.resolve.ResolveJob
+
+!ENTRY org.eclipse.core.jobs 2 2 2015-08-25 11:13:16.727
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.bndtools.core.resolve.ResolveJob
+
+!ENTRY org.eclipse.core.jobs 2 2 2015-08-25 11:13:16.727
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.bndtools.core.resolve.ResolveJob
+
+!ENTRY org.eclipse.core.jobs 2 2 2015-08-25 11:13:16.727
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.bndtools.core.resolve.ResolveJob
