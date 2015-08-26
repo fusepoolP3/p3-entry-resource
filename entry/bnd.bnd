@@ -5,7 +5,13 @@ javac.target: 1.8
 	biz.aQute.bnd.annotation,\
 	${junit},\
 	osgi.cmpn;version=5.0,\
-	javax.ws.rs-api;version=2.0
+	javax.ws.rs-api;version=2.0,\
+	org.apache.clerezza.rdf.utils;version=1.0,\
+	org.apache.clerezza.commons-rdf.commons-rdf-api;version=0.1,\
+	org.apache.clerezza.commons-rdf.commons-rdf-impl-utils;version=0.1,\
+	org.apache.clerezza.rdf.ontologies;version=1.0,\
+	eu.fusepool.p3.vocab;version=1.0,\
+	org.apache.felix.log;version=1.0
 Bundle-Version: 0.0.0.${tstamp}
 Private-Package:  \
 	eu.fusepool.p3.entry

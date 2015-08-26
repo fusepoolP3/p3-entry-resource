@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
+<fullyQualifiedTypeName name="org.apache.clerezza.rdf.utils.GraphNode"/>
+<fullyQualifiedTypeName name="org.apache.clerezza.commons.rdf.IRI"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
+<fullyQualifiedTypeName name="org.apache.clerezza.commons.rdf.Graph"/>
+<fullyQualifiedTypeName name="org.apache.clerezza.commons.rdf.impl.utils.simple.SimpleGraph"/>
+<fullyQualifiedTypeName name="org.apache.clerezza.rdf.ontologies.RDF"/>
+<fullyQualifiedTypeName name="org.apache.felix.scr.annotations.ReferencePolicyOption"/>
 </qualifiedTypeNameHistroy>

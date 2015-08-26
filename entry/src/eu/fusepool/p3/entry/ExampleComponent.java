@@ -6,9 +6,6 @@ import org.osgi.service.component.annotations.*;
 public class ExampleComponent {
 
 
-	@Activate
-	void activate() {
-		System.out.println("activating....");
-	}
+
 
 }
