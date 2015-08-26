@@ -23,7 +23,7 @@ public class RootResource {
     
 	@Activate
 	void activate() {
-		System.out.println("activating........!!!");
+		System.out.println("activating........");
 	}
     
     @GET
