@@ -1,0 +1,36 @@
+package eu.fusepool.p3.entry;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
+import org.apache.clerezza.commons.rdf.Graph;
+import org.apache.clerezza.commons.rdf.IRI;
+import org.apache.clerezza.commons.rdf.impl.utils.simple.SimpleGraph;
+import org.apache.clerezza.rdf.utils.GraphNode;
+import org.osgi.service.component.annotations.Component;
+
+
+
+@Component(service = Object.class, property = "javax.ws.rs=true")
+@Path("")
+public class RootResource {
+	
+    IRI platformIri = new IRI("http://example.org/");
+    
+    @GET
+    @Produces("application/rdf+xml")
+    public Graph root() {
+        Graph g = new SimpleGraph();
+        GraphNode node = new GraphNode(platformIri, g);
+        node.addProperty(RDF.type, FP3.Platform);
+        return g;
+    }
+	
+	@GET
+	@Path("hello")
+	public String sayHello() {
+		return "hullo";
+	}
+
+}
