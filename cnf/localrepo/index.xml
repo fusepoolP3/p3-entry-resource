@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1440603219134" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1440935755793" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.google.guava"/>
@@ -13211,6 +13211,138 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.zazukoians.zz2h"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.0.0.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="fbac357845ad87a9d633e44692959dec412b69028c53d308aeb9cd02d3ab1b58"/>
+      <attribute name="url" value="org.zazukoians.zz2h/org.zazukoians.zz2h-1.0.0.jar"/>
+      <attribute name="size" type="Long" value="40891"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.zazukoians.zz2h"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.zazukoians.zz2h"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.zazukoians.zz2h.style"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="org.zazukoians.zz2h"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.SNAPSHOT"/>
+      <directive name="uses" value="javax.ws.rs.core,org.apache.clerezza.commons.rdf,org.apache.clerezza.platform.typerendering,org.apache.clerezza.platform.typerendering.scala,org.apache.clerezza.rdf.scala.utils,org.apache.clerezza.rdf.utils,scala,scala.reflect,scala.xml"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.zazukoians.zz2h"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="org.zazukoians.zz2h"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.SNAPSHOT"/>
+      <directive name="uses" value="javax.ws.rs,javax.ws.rs.core,org.apache.clerezza.commons.rdf,org.apache.clerezza.rdf.core.access,org.apache.clerezza.rdf.core.serializedform,org.apache.clerezza.rdf.scala.utils,org.apache.clerezza.rdf.utils,scala.reflect"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="java.lang.Object"/>
+      <attribute name="javax.ws.rs" value="true"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.clerezza.platform.typerendering.TypeRenderlet"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" type="List&lt;String&gt;" value="java.lang.Object"/>
+      <attribute name="javax.ws.rs" value="true"/>
+      <directive name="uses" value="java.lang"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" type="List&lt;String&gt;" value="java.lang.Object"/>
+      <attribute name="javax.ws.rs" value="true"/>
+      <directive name="uses" value="java.lang"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" type="List&lt;String&gt;" value="org.apache.clerezza.platform.typerendering.TypeRenderlet"/>
+      <directive name="uses" value="org.apache.clerezza.platform.typerendering"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.ws.rs)(version&gt;=1.0.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.ws.rs.core)(version&gt;=1.0.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.clerezza.commons.rdf)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.clerezza.jaxrs.utils)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.clerezza.platform.typerendering)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.clerezza.platform.typerendering.scala)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.clerezza.rdf.core.access)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.clerezza.rdf.core.serializedform)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.clerezza.rdf.ontologies)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.clerezza.rdf.scala.utils)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.clerezza.rdf.utils)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.11.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.immutable)(version&gt;=2.11.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.11.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.xml)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.service">
+      <directive name="effective" value="active"/>
+      <directive name="filter" value="(objectClass=org.apache.clerezza.rdf.core.serializedform.Parser)"/>
+    </requirement>
+    <requirement namespace="osgi.service">
+      <directive name="effective" value="active"/>
+      <directive name="filter" value="(objectClass=org.apache.clerezza.rdf.core.access.TcManager)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+    <requirement namespace="osgi.service">
+      <directive name="filter" value="(objectClass=org.apache.clerezza.rdf.core.access.TcManager)"/>
+      <directive name="effective" value="active"/>
+    </requirement>
+    <requirement namespace="osgi.service">
+      <directive name="filter" value="(objectClass=org.apache.clerezza.rdf.core.serializedform.Parser)"/>
+      <directive name="effective" value="active"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(&amp;(osgi.extender=osgi.ds)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="effective" value="active"/>
     </requirement>
   </resource>
 </repository>

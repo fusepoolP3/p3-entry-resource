@@ -73,4 +73,12 @@
 	org.apache.clerezza.platform.config;version=1.0.0,\
 	org.apache.clerezza.permissiondescriptions;version=0.2.0,\
 	org.apache.clerezza.platform;version=1.0.0,\
-	org.apache.clerezza.rdf.file.storage;version=1.0.0
+	org.apache.clerezza.rdf.file.storage;version=1.0.0,\
+	org.zazukoians.zz2h,\
+	org.apache.clerezza.jaxrs.utils;version=0.9.0,\
+	org.apache.clerezza.platform.typerendering.scala;version=1.0.0,\
+	org.scala-lang.scala-library;version=2.11.6,\
+	org.scala-lang.modules.scala-xml,\
+	org.apache.clerezza.rdf.scala.utils
+-runproperties:  \
+	org.osgi.service.http.port=8181
