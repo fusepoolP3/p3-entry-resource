@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1440935755793" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1441040600739" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.google.guava"/>
@@ -9393,6 +9393,58 @@
     </capability>
     <requirement namespace="osgi.wiring.host">
       <directive name="filter" value="(&amp;(osgi.wiring.host=system.bundle)(bundle-version&gt;=0.0.0))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.stanbol.commons.web.resources"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.12.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="4023067ff60ea307674cc1ae435b50f7cfae249ec4d66cba87365d8d206d6fa4"/>
+      <attribute name="url" value="org.apache.stanbol.commons.web.resources/org.apache.stanbol.commons.web.resources-0.12.0.jar"/>
+      <attribute name="size" type="Long" value="15630"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.stanbol.commons.web.resources"/>
+      <attribute name="bundle-version" type="Version" value="0.12.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.stanbol.commons.web.resources"/>
+      <attribute name="bundle-version" type="Version" value="0.12.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.stanbol.commons.web.resources"/>
+      <attribute name="version" type="Version" value="0.12.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.stanbol.commons.web.resources"/>
+      <attribute name="bundle-version" type="Version" value="0.12.0"/>
+      <directive name="uses" value="javax.servlet,org.osgi.framework,org.osgi.service.component,javax.servlet.http"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" type="List&lt;String&gt;" value="javax.servlet.Filter"/>
+      <attribute name="pattern" value=".*"/>
+      <attribute name="service.ranking" type="Long" value="500"/>
+      <attribute name="service.vendor" value="Apache Stanbol"/>
+      <attribute name="service.pid" value="org.apache.stanbol.commons.web.resources.ResourceServingFilter"/>
+      <directive name="uses" value="javax.servlet"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=2.5.0)(!(version&gt;=4.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=2.5.0)(!(version&gt;=4.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.4.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.component)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(&amp;(osgi.extender=osgi.ds)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="effective" value="active"/>
     </requirement>
   </resource>
   <resource>

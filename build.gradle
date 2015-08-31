@@ -4,6 +4,8 @@
  * Depends on bndWorkspace and bndURI properties set by settings.gradle.
  */
 
+apply plugin: 'scala'
+
 /* Add bnd as a script dependency */
 buildscript {
   dependencies {

@@ -12,9 +12,16 @@ javac.target: 1.8
 	org.apache.clerezza.rdf.ontologies;version=1.0,\
 	eu.fusepool.p3.vocab;version=1.0,\
 	org.apache.felix.log;version=1.0,\
-	org.apache.clerezza.platform.typepriority;version=1.0
+	org.apache.clerezza.platform.typepriority;version=1.0,\
+	org.apache.clerezza.platform.typerendering.scala;version=1.0,\
+	org.scala-lang.modules.scala-xml;version=1.0,\
+	org.apache.clerezza.rdf.scala.utils;version=1.0,\
+	org.apache.clerezza.platform.typerendering.core;version=1.0
 Bundle-Version: 0.0.0.${tstamp}
 Private-Package:  \
-	eu.fusepool.p3.entry
+	eu.fusepool.p3.entry,\
+	eu.fusepool.p3.entry.style
+Include-Resource: src/META-INF/resources/test.txt
+
 -dsannotations:  \
 	*
