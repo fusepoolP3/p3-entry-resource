@@ -36,7 +36,10 @@ class ResourceRenderlet extends SRenderlet {
             <link rel="matchers" href="/rdf2h/matchers.ttl" type="text/turtle" />
             <script src="/js/ld2h/js/libs/rdf2h/rdf2h.js"></script>
             <script src="/js/ld2h/js/libs/jquery/jquery.min.js"></script>
-            <script src="/js/ld2h/js/ld2h.js"></script>        
+            <script src="/js/ld2h/js/ld2h.js"></script>
+						<script src="/js/PlatformEntryConfigurator.js"></script>
+						<script src="/js/backend-config.js"></script>   
+     
             <script type="text/javascript">
 $(function () {{
    var store = new rdf.LdpStore({{parsers: {{
