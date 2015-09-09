@@ -1,0 +1,116 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
+@prefix r2hp: <http://rdf2h.github.io/2015/rdf2h-points#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix s: <http://schema.org/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fp3: <http://vocab.fusepool.info/fp3#>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix tfr: <http://vocab.fusepool.info/tfrldpc#>.
+@prefix tr: <http://vocab.fusepool.info/trldpc#>.
+@prefix trans: <http://vocab.fusepool.info/transformer#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+ 
+<platformConfig> a r2h:Matcher ;
+	r2h:triplePattern [    
+    	r2h:subject r2h:this;
+    	r2h:predicate rdf:type;
+    	r2h:object fp3:Platform;
+	];
+	r2h:template [ 
+	    r2h:context r2h:Default;
+	    r2h:mustache '''
+	    
+	        Title: {{dc:title}}<br/>
+	        URI: {{.}}<br/>
+	        <h3>Registered Transformer Factory UIs</h3>
+	        {{#fp3:transformerFactoryRegistry}}
+	    	    Transformer Factory Registry: {{.}}<br />
+		        <div resource="{{.}}" class="fetch">tfr</div>
+	        {{/fp3:transformerFactoryRegistry}}
+	        {{#fp3:transformerRegistry}}
+		        <h3>Registered Transformers</h3>
+	        	Transformer Registry: {{.}}<br />
+	        	<div resource="{{.}}" class="fetch">tfr</div>
+	        {{/fp3:transformerRegistry}}
+	        Sparql Endpoint: {{fp3:sparqlEndpoint}}<br />
+	        {{#+fp3:userInteractionRegistry}}
+	        	User Interaction Request Registry: {{fp3:userInteractionRegistry}}
+	        {{/+fp3:userInteractionRegistry}}
+	        '''
+	];
+	r2h:before <ldpc>.
+
+<tfr> a r2h:Matcher ;
+    r2h:triplePattern [    
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object tfr:TransformerFactoryRegistration
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:mustache '''
+
+<h4>{{dct:title}}</h4>
+<p>URI: <a href="{{tfr:transformerFactory}}">{{tfr:transformerFactory}}</a></p>
+<p>{{dct:description}}</p>'''
+                ];
+                r2h:before <ldpc>.
+                        
+            <tr> a r2h:Matcher ;
+                r2h:triplePattern [    
+                    r2h:subject r2h:this;
+                    r2h:predicate rdf:type;
+                    r2h:object tr:TransformerRegistration
+                ];
+                r2h:template [ 
+                    r2h:context r2h:Default;
+                    r2h:mustache '''
+
+<h4>{{dct:title}}</h4>
+<p>URI: <a href="{{tr:transformer}}">{{tr:transformer}}</a></p>
+<p>{{dct:description}}</p>
+<div class="fetch" resource="{{tr:transformer}}"></div>'''
+                ];
+                r2h:before <ldpc>.
+                        
+            <transformer> a r2h:Matcher ;
+                r2h:triplePattern [    
+                    r2h:subject r2h:this;
+                    r2h:predicate trans:supportedInputFormat;
+                ];
+                r2h:template [ 
+                    r2h:context r2h:Default;
+                    r2h:mustache '''
+Supported Input Formats:<br/>
+<ul>
+{{#trans:supportedInputFormat}}
+<li>{{.}}</li>
+{{/trans:supportedInputFormat}}
+</ul>
+Supported Output Formats:<br/>
+<ul>
+{{#trans:supportedOutputFormat}}
+<li>{{.}}</li>
+{{/trans:supportedOutputFormat}}
+</ul>'''
+    ];
+    r2h:before <tr>.                        
+            
+<ldpc> a r2h:Matcher ;
+    r2h:triplePattern [    
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object ldp:BasicContainer
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:mustache '''	
+<ul>
+{{#ldp:contains}}
+<li resource="{{.}}" class="fetch">element of container</li>
+{{/ldp:contains}}
+</ul>'''
+];
+r2h:before r2hp:specific.

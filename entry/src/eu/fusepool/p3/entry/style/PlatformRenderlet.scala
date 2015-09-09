@@ -30,10 +30,12 @@ class ResourceRenderlet extends SRenderlet {
           <a href={ href }>{ label }</a>
         }
       override def content = {
-        <html xmlns="http://www.w3.org/1999/xhtml" class="fetch" resource="">
+        <html xmlns="http://www.w3.org/1999/xhtml" >
           <head>
             <title>Fusepool P3 Platform</title>
             <link rel="matchers" href="/rdf2h/matchers.ttl" type="text/turtle" />
+						<link rel="matchers" href="/rdf2h/platform-matchers.ttl" type="text/turtle" />
+						<link rel="matchers" href="https://rawgit.com/rdf2h/rdf2h.github.io/master/2015/rdf2h-points.ttl" type="text/turtle" />
             <script src="/js/ld2h/js/libs/rdf2h/rdf2h.js"></script>
             <script src="/js/ld2h/js/libs/jquery/jquery.min.js"></script>
             <script src="/js/ld2h/js/ld2h.js"></script>
@@ -41,15 +43,18 @@ class ResourceRenderlet extends SRenderlet {
 						<script src="/js/backend-config.js"></script>   
      
             <script type="text/javascript">
-$(function () {{
-   var store = new rdf.LdpStore({{parsers: {{
-       //'application/ld+json': rdf.parseJsonLd,
-       //'application/n-triples': rdf.parseTurtle,
+	$(function () {{
+  	var store = new rdf.LdpStore({{parsers: {{
        'text/turtle': rdf.parseTurtle
-   }}}});
-   LD2h.store = store;
-   LD2h.expand();
-}});
+   	}}}});
+   	LD2h.store = store;
+		var configurator = new PlatformEntryConfigurator(window.location);
+		new P3BackendConfigurator().initialize(configurator).then(function() {{
+			$("#wait").hide();
+      $("#content").css('visibility', 'visible');
+   	  LD2h.expand();
+    }});
+	}});
             </script>
           </head>
           <body>
@@ -137,7 +142,7 @@ $(function () {{
             </ul>
 
             <h2>Platform details</h2>
-            <div id="platform"></div>
+            <div id="platform" class="fetch" resource=""></div>
 
         </div>
           </body>

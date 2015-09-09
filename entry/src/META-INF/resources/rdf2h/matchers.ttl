@@ -1,11 +1,14 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
+@prefix r2hp: <http://rdf2h.github.io/2015/rdf2h-points#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix s: <http://schema.org/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix zzm: <http://zz2h.zazukoinas.org/modes/> .
 @prefix zz2h: <http://zz2h.zazukoinas.org/ontology/> .
+
+r2hp:fallback r2h:before <page> .
 
 <page> a r2h:Matcher ;
   r2h:triplePattern [    

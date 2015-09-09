@@ -48,7 +48,7 @@
 	slf4j.api;version='[1.7.7,1.7.8)',\
 	org.apache.clerezza.rdf.jena.parser;version=1.1.0,\
 	org.apache.clerezza.rdf.jena.serializer;version=1.1.0,\
-	eu.fusepool.p3.vocab;version=1.0.0,\
+	eu.fusepool.p3.vocab;version=1.1.0,\
 	org.apache.clerezza.rdf.utils;version=1.0.0,\
 	org.apache.clerezza.rdf.core;version=1.0.0,\
 	org.apache.clerezza.utils;version=0.2.0,\
