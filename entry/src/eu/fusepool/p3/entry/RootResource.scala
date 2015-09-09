@@ -14,48 +14,45 @@ import javax.ws.rs.core.Response.Status
 @Component(service = Array(classOf[Object]), property = Array("javax.ws.rs=true"))
 @Path("")
 class RootResource {
-  
+
   var tr: IRI = null;
   var irldpc: IRI = null;
   var tfr: IRI = null;
   var dcr: IRI = null;
+  var sparqlEndpoint: IRI = null;
 
   @GET
   def hello(@Context uriInfo: UriInfo) =
     {
       val resource = uriInfo.getRequestUri().toString().iri;
-      val g = new EzGraph() 
-      {
+      val g = new EzGraph() {
         (
-         resource.a(FP3.Platform) -- DC.title --> ("Fusepool P3 Instance "+uriInfo.getRequestUri.getHost).lang("en")
-          -- FP3.sparqlEndpoint  --> ("http://example.org/sparql").iri
-        )
-         (
-           if (tr != null) {
+          resource.a(FP3.Platform) -- DC.title --> ("Fusepool P3 Instance " + uriInfo.getRequestUri.getHost).lang("en"))
+        (
+          if (sparqlEndpoint != null) {
+            resource -- FP3.sparqlEndpoint --> sparqlEndpoint
+          })
+        (
+          if (tr != null) {
             resource -- FP3.transformerRegistry --> tr
-           }
-         )
-         (
-           if (irldpc != null) {
+          })
+        (
+          if (irldpc != null) {
             resource -- FP3.irLDPC --> irldpc
-           }
-         )
-         (
-           if (tfr != null) {
+          })
+        (
+          if (tfr != null) {
             resource -- FP3.transformerFactoryRegistry --> tfr
-           }
-         )
-         (
-           if (dcr != null) {
+          })
+        (
+          if (dcr != null) {
             resource -- "http://vocab.fusepool.info/fp3#dashboardConfigRegistry".iri --> dcr
-           }
-         )
-         
+          })
+
       };
-      new GraphNode(resource,g)
+      new GraphNode(resource, g)
     }
-  
-  
+
   @GET
   @Path("fullyConfigured")
   def isFullyConfigured() = {
@@ -65,7 +62,7 @@ class RootResource {
       "false"
     }
   }
-  
+
   @POST
   @Path("tr")
   def setTr(tr: String) = {
@@ -74,7 +71,7 @@ class RootResource {
     }
     this.tr = tr.iri
   }
-  
+
   @POST
   @Path("tfr")
   def setTfr(tfr: String) = {
@@ -83,7 +80,7 @@ class RootResource {
     }
     this.tfr = tfr.iri
   }
-  
+
   @POST
   @Path("irldpc")
   def setIrldpc(irldpc: String) = {
@@ -92,7 +89,7 @@ class RootResource {
     }
     this.irldpc = irldpc.iri
   }
-  
+
   @POST
   @Path("dcr")
   def setDcr(dcr: String) = {
@@ -100,5 +97,14 @@ class RootResource {
       throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
     }
     this.dcr = dcr.iri
+  }
+
+  @POST
+  @Path("registerSparql")
+  def setSparqlEndpoint(sparqlEndpoint: String) = {
+    if (this.sparqlEndpoint != null) {
+      throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
+    }
+    this.sparqlEndpoint = sparqlEndpoint.iri
   }
 }

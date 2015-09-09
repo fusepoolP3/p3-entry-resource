@@ -26,28 +26,35 @@ PlatformEntryConfigurator.prototype.ifUnconfigured = function(conditional) {
 
 PlatformEntryConfigurator.prototype.registerTFR = function(tfr) {
 	var configurator = this;
-	$.post(this.baseUri+"tfr", tfr, function(data, textstatus) {
+	return $.post(this.baseUri+"tfr", tfr, function(data, textstatus) {
 		console.log("Registering TFR" +tfr+" with: "+configurator.baseUri+". Status: "+textstatus);
 	})
 }
 
 PlatformEntryConfigurator.prototype.registerTR = function(tr) {
 	var configurator = this;
-	$.post(this.baseUri+"tr", tr, function(data, textstatus) {
+	return $.post(this.baseUri+"tr", tr, function(data, textstatus) {
 		console.log("Registering TR" +tr+" with: "+configurator.baseUri+". Status: "+textstatus);
 	})
 }
 
 PlatformEntryConfigurator.prototype.registerIRLDPC = function(irldpc) {
 	var configurator = this;
-	$.post(this.baseUri+"irldpc", irldpc, function(data, textstatus) {
+	return $.post(this.baseUri+"irldpc", irldpc, function(data, textstatus) {
 		console.log("Registering irldpc" +irldpc+" with: "+configurator.baseUri+". Status: "+textstatus);
 	})
 }
 PlatformEntryConfigurator.prototype.registerDCR = function(dcr) {
 	var configurator = this;
-	$.post(this.baseUri+"dcr", dcr, function(data, textstatus) {
+	return $.post(this.baseUri+"dcr", dcr, function(data, textstatus) {
 		console.log("Registering DCR" +dcr+" with: "+configurator.baseUri+". Status: "+textstatus);
+	})
+}
+
+PlatformEntryConfigurator.prototype.registerSparql = function(sparqlEndpoint) {
+	var configurator = this;
+	return $.post(this.baseUri+"registerSparql", sparqlEndpoint, function(data, textstatus) {
+		console.log("Registering sparql" +sparqlEndpoint+" with: "+configurator.baseUri+". Status: "+textstatus);
 	})
 }
 

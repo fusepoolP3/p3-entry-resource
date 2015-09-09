@@ -40,7 +40,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 	    });
 	
 		var irldpcRegistration = putIrldpcRequest.then(function () {
-			platformEntryConfigurator.registerIRLDPC(irldpcUri);
+			return platformEntryConfigurator.registerIRLDPC(irldpcUri);
 		})
 		
 		var tfrUri = baseURI + '/tfr';
@@ -54,7 +54,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
         });
 		
 		var tfrRegistration = putTfrRequest.then(function () {
-			platformEntryConfigurator.registerTFR(tfrUri);
+			return platformEntryConfigurator.registerTFR(tfrUri);
 		});
 		
 		var trUri = baseURI + '/tr';
@@ -68,7 +68,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
         });
 		
 		var trRegistration = putTrRequest.then(function () {
-			platformEntryConfigurator.registerTR(trUri);
+			return platformEntryConfigurator.registerTR(trUri);
 		});
 		
 		var dcrUri = baseURI + '/dcr';
@@ -82,14 +82,13 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
         });
 		
 		var dcrRegistration = putDcrRequest.then(function () {
-			platformEntryConfigurator.registerDCR(dcrUri);
+			return platformEntryConfigurator.registerDCR(dcrUri);
 		});
 		
-		/*return new Promise(function (resolve, reject) {
-			platformEntryConfigurator.registerTLDPC("http:example.rg/ldp");
-			resolve();
-		});*/
-	
-		return Promise.all([irldpcRegistration, tfrRegistration, trRegistration, dcrRegistration]);
+		
+		var sparqlRegistration = platformEntryConfigurator.registerSparql("http://sandbox.fusepool.info:8181/sparql/select");
+		
+		return Promise.all([irldpcRegistration, tfrRegistration, trRegistration, dcrRegistration, sparqlRegistration]);
+
 	});
 };
