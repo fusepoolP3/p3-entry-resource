@@ -17,3 +17,11 @@ You can also build with gradle:
 And create an executable jar:
 
     gradle export
+
+You'll find the exectuable jar at ./entry/generated/distributions/executable/launch.jar.
+
+Execute with:
+
+    java -jar ./entry/generated/distributions/executable/launch.jar
+
+
