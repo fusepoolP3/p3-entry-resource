@@ -1,4 +1,4 @@
--runfw: org.apache.felix.framework;version='[4,5)'
+-runfw: org.apache.felix.framework;version='[5.2.0,5.2.0]'
 -runee: JavaSE-1.8
 -runsystemcapabilities: ${native_capability}
 
@@ -26,7 +26,7 @@
 	org.apache.felix.gogo.runtime;version='[0.12.1,0.12.2)',\
 	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
 	org.apache.felix.http.jetty;version='[2.2.2,2.2.3)',\
-	org.apache.felix.scr;version=1.8.2,\
+	org.apache.felix.scr;version=2.0.2,\
 	org.glassfish.hk2.api;version=2.4.0,\
 	org.glassfish.hk2.external.aopalliance-repackaged;version=2.4.0,\
 	org.glassfish.hk2.external.asm-all-repackaged;version='[2.2.0,2.2.1)',\
@@ -39,7 +39,6 @@
 	org.glassfish.jersey.core.jersey-client;version=2.21.0,\
 	org.glassfish.jersey.core.jersey-common;version=2.21.0,\
 	org.glassfish.jersey.core.jersey-server;version=2.21.0,\
-	osgi.cmpn;version='[5.0.0,5.0.1)',\
 	osgi.enterprise;version='[4.2.0,4.2.1)',\
 	osgi.residential;version='[4.3.0,4.3.1)',\
 	org.apache.clerezza.commons-rdf.commons-rdf-api;version=0.1,\
