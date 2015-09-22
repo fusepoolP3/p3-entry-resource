@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 
 # Build
 COPY ./ /usr/src/app
-RUN gradle build
+RUN gradle build export
 
 ENTRYPOINT ["java"]
 CMD ["-jar", "entry/generated/distributions/executable/launch.jar"]
