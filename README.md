@@ -22,7 +22,7 @@ With docker you can either build it locally or just get a pre-built version from
 
 To use the built build above and launch it on port 80:
 
-    docker run --rm -ti -p 8081:8080 p3-entry-resource
+    docker run --rm -ti -p 80:8080 p3-entry-resource
     
 To use the version from dockerhub
 
