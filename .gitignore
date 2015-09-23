@@ -6,3 +6,4 @@ RemoteSystemsTempFiles
 .recommenders
 .cache-*
 build
+.nb-gradle/
