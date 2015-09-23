@@ -1,4 +1,4 @@
-FROM reto/gradle
+FROM niaquinto/gradle
 MAINTAINER Reto Gmür <me@farewellutopia.com>
 
 #Prepare
