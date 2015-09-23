@@ -1,0 +1,24 @@
+apply plugin: 'scala'
+
+
+repositories{
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies{
+    compile "org.scala-lang:scala-library:2.11.6"
+}
+
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        scala {
+            srcDirs = ['test']
+        }
+    }
+}
