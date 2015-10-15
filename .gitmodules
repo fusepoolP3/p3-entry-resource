@@ -1,6 +1,7 @@
 [submodule "entry/src/META-INF/resources/js/ld2h"]
 	path = entry/src/META-INF/resources/js/ld2h
 	url = https://github.com/rdf2h/ld2h.git
+	branch = gh-pages
 [submodule "entry/src/META-INF/resources/js/autoconfig"]
 	path = entry/src/META-INF/resources/js/autoconfig
 	url = https://github.com/fusepoolP3/p3-autoconfiguration-tool.git
