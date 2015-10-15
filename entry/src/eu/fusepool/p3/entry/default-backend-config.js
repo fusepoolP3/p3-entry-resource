@@ -9,7 +9,7 @@ P3BackendConfigurator.prototype.initialize = function(platformEntryConfigurator)
 
 P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntryConfigurator) {
 	var configurator = this;
-	var createRoot = new Promise(function(resolve, reject) {
+/*	var createRoot = new Promise(function(resolve, reject) {
 		var postTfrRequest = $.ajax({type: 'POST',
 	        url: "http://sandbox.fusepool.info:8181/ldp",
 	        headers: {'Content-Type': 'text/turtle', 'Slug': "test-config"},
@@ -28,7 +28,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 	        reject(Error(failure));
 	    });
 	});    
-	return createRoot.then(function(baseURI) {
+	return createRoot.then(function(baseURI) { */
 		var irldpcUri = baseURI + '/uir';
 		var putIrldpcRequest = $.ajax({type: 'PUT',
 	        url: irldpcUri,
@@ -90,5 +90,5 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 		
 		return Promise.all([irldpcRegistration, tfrRegistration, trRegistration, dcrRegistration, sparqlRegistration]);
 
-	});
+	//});
 };
