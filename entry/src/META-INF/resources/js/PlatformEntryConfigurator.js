@@ -58,5 +58,18 @@ PlatformEntryConfigurator.prototype.registerSparql = function(sparqlEndpoint) {
 	})
 }
 
+PlatformEntryConfigurator.prototype.registerLdpRoot = function(ldpRoot) {
+	var configurator = this;
+	return $.post(this.baseUri+"registerLdpRoot", ldpRoot, function(data, textstatus) {
+		console.log("Registering LDP Root" +ldpRoot+" with: "+configurator.baseUri+". Status: "+textstatus);
+	})
+}
+
+PlatformEntryConfigurator.prototype.registerDashboard = function(dashboard) {
+	var configurator = this;
+	return $.post(this.baseUri+"registerDashboard", dashboard, function(data, textstatus) {
+		console.log("Registering dashboard" +dashboard+" with: "+configurator.baseUri+". Status: "+textstatus);
+	})
+}
 
 

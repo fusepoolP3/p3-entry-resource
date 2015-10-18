@@ -38,6 +38,9 @@
 	        {{#+fp3:userInteractionRegistry}}
 	        	User Interaction Request Registry: {{fp3:userInteractionRegistry}}
 	        {{/+fp3:userInteractionRegistry}}
+	        {{#fp3:dashboard}}
+	        	Dashboard: {{.}}<br />
+	        {{/fp3:dashboard}}
 	        '''
 	];
 	r2h:before <ldpc>.

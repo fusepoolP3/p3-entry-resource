@@ -9,13 +9,14 @@ P3BackendConfigurator.prototype.initialize = function(platformEntryConfigurator)
 
 P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntryConfigurator) {
 	var configurator = this;
-/*	var createRoot = new Promise(function(resolve, reject) {
+	var getLdpRoot = new Promise(function(resolve, reject) {
+		//in a distribution we should resolve with the hard code ldp root
 		var postTfrRequest = $.ajax({type: 'POST',
 	        url: "http://sandbox.fusepool.info:8181/ldp",
 	        headers: {'Content-Type': 'text/turtle', 'Slug': "test-config"},
 	        async: true,
 	        data: '<> a <http://www.w3.org/ns/ldp#BasicContainer> ; ' +
-	        ' <http://www.w3.org/2000/01/rdf-schema#label> "A test instance"@en . ',
+	        ' <http://www.w3.org/2000/01/rdf-schema#label> "The LDP root for a test instance"@en . ',
 	        contentType: 'text/turtle'
 	    });
 	
@@ -28,7 +29,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 	        reject(Error(failure));
 	    });
 	});    
-	return createRoot.then(function(baseURI) { */
+	return getLdpRoot.then(function(baseURI) { 
 		var irldpcUri = baseURI + '/uir';
 		var putIrldpcRequest = $.ajax({type: 'PUT',
 	        url: irldpcUri,
@@ -88,7 +89,25 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 		
 		var sparqlRegistration = platformEntryConfigurator.registerSparql("http://sandbox.fusepool.info:8181/sparql/select");
 		
-		return Promise.all([irldpcRegistration, tfrRegistration, trRegistration, dcrRegistration, sparqlRegistration]);
+		var ldpRootRegistration = platformEntryConfigurator.registerLdpRoot("http://sandbox.fusepool.info:8181/ldp/");
+		
+		var dashboardRegistration = platformEntryConfigurator.registerDashboard("http://sandbox.fusepool.info:8200/?platformURI="+window.location);
+	
+		var platformPreparation = Promise.all([irldpcRegistration, tfrRegistration, trRegistration, 
+		                                       dcrRegistration, sparqlRegistration, ldpRootRegistration]);
+		return platformPreparation.then(function() {
+			return P3Platform.getPlatform(window.location).then(function(platform) {
+				platform.transformerRegistry.registerTransformer("http://sandbox.fusepool.info:8303/", "Any23 Transformer", "Transform data using Apache Any23");
+				platform.transformerFactoryRegistry.registerTransformerFactory(
+                        "http://sandbox.fusepool.info:8201/?transformerBase=http://sandbox.fusepool.info:8300&platformURI="+window.location, "Pipeline UI", "Allows to create pipeline transformers.");
+                platform.transformerFactoryRegistry.registerTransformerFactory(
+                        "http://sandbox.fusepool.info:8202/?transformerBase=http://sandbox.fusepool.info:8301&platformURI="+window.location, "Dictionary Matcher UI", "Allows to create dictionary matcher transformers.");
+                platform.transformerFactoryRegistry.registerTransformerFactory(
+                        "http://sandbox.fusepool.info:8203/?transformerBase=http://sandbox.fusepool.info:8310&platformURI="+window.location, "Batchrefine UI", "Allows to create transformers using Openrefine configurations.");
+                platform.transformerFactoryRegistry.registerTransformerFactory(
+                        "http://sandbox.fusepool.info:8204/?transformerBase=http://sandbox.fusepool.info:8307&platformURI="+window.location, "XSLT Transformer UI", "Allows to create XSLT transformers.");
+			});
+		});
 
-	//});
+	});
 };

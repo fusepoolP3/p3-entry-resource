@@ -10,6 +10,7 @@ import org.apache.clerezza.rdf.ontologies._
 import eu.fusepool.p3.vocab.FP3
 import Preamble._
 import javax.ws.rs.core.Response.Status
+import scala.collection.mutable._
 
 @Component(service = Array(classOf[Object]), property = Array("javax.ws.rs=true"))
 @Path("")
@@ -19,7 +20,9 @@ class RootResource {
   var irldpc: IRI = null;
   var tfr: IRI = null;
   var dcr: IRI = null;
+  var ldpRoot: IRI = null;
   var sparqlEndpoint: IRI = null;
+  var dashboards: Set[IRI] = scala.collection.mutable.HashSet[IRI]();
 
   @GET
   def hello(@Context uriInfo: UriInfo) =
@@ -38,15 +41,23 @@ class RootResource {
           })
         (
           if (irldpc != null) {
-            resource -- FP3.irLDPC --> irldpc
+            resource -- FP3.userInteractionRequestRegistry --> irldpc
           })
         (
           if (tfr != null) {
             resource -- FP3.transformerFactoryRegistry --> tfr
           })
         (
+          if (ldpRoot != null) {
+            resource -- FP3.ldpRoot --> ldpRoot
+          })
+        (
           if (dcr != null) {
             resource -- "http://vocab.fusepool.info/fp3#dashboardConfigRegistry".iri --> dcr
+          })
+        (
+          dashboards.foreach {
+            dashboard => resource -- FP3.dashboard --> dashboard
           })
 
       };
@@ -56,7 +67,7 @@ class RootResource {
   @GET
   @Path("fullyConfigured")
   def isFullyConfigured() = {
-    if ((this.tr != null) && (tfr != null) && (irldpc != null) && (dcr != null)) {
+    if ((this.tr != null) && (tfr != null) && (irldpc != null) && (dcr != null) && (ldpRoot != null)) {
       "true"
     } else {
       "false"
@@ -100,11 +111,29 @@ class RootResource {
   }
 
   @POST
+  @Path("registerLdpRoot")
+  def setLdpRoot(ldpRoot: String) = {
+    if (this.ldpRoot != null) {
+      throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
+    }
+    this.ldpRoot = ldpRoot.iri
+  }
+  
+  @POST
   @Path("registerSparql")
   def setSparqlEndpoint(sparqlEndpoint: String) = {
     if (this.sparqlEndpoint != null) {
       throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
     }
     this.sparqlEndpoint = sparqlEndpoint.iri
+  }
+
+  @POST
+  @Path("registerDashboard")
+  def addDashboard(dashboard: String) = {
+    if (this.dashboards.size != 0) {
+      throw new WebApplicationException("Currently only one dashboard may be set", Status.FORBIDDEN)
+    }
+    this.dashboards += dashboard.iri
   }
 }
