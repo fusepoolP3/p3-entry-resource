@@ -32,6 +32,9 @@ To use the version from dockerhub
 
 The projects comes with eclipse configuration files so that they can be used with [bndtools](http://bndtools.org/). Just import both project into an empty eclipse workspace.
 
+ * Note that you cannot clone the project out of eclipse, as it is not an eclipse project but an eclipse workspace
+ * Install the bndtools befotre opening the workspace
+
 ### Gradle
 
 You can also build with gradle:
