@@ -1,4 +1,5 @@
-# P3 Entry Resource
+# P3 Entry Resource [![Build Status](https://travis-ci.org/fusepoolP3/p3-entry-resource.svg?branch=master)](https://travis-ci.org/fusepoolP3/p3-entry-resource)
+
 
 This project delivers the entry resource for a P3 platform instance.
 
