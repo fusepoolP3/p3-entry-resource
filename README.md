@@ -31,7 +31,7 @@ To use the version from dockerhub
     
 ### Eclipse
 
-The projects comes with eclipse configuration files so that they can be used with [bndtools](http://bndtools.org/). Just import both project into an empty eclipse workspace.
+The projects comes with eclipse configuration files so that they can be used with [bndtools](http://bndtools.org/). Just import both project into an empty eclipse workspace. As it is written in Scala you also need the [Scala IDE Plugin](http://scala-ide.org/).
 
  * Note that you cannot clone the project out of eclipse, as it is not an eclipse project but an eclipse workspace
  * Install the bndtools befotre opening the workspace
