@@ -80,17 +80,18 @@ class RootResource {
           })
 
       };
-      new GraphNode(resource, g)
+      val node = new GraphNode(resource, g)
+      Response.ok(node).header("Vary", "Accept").build();
     }
 
   @GET
   @Path("fullyConfigured")
   def isFullyConfigured() = {
-    if ((this.tr != null) && (tfr != null) && (irldpc != null) && (dcr != null) && (ldpRoot != null)) {
+    Response.ok(if ((this.tr != null) && (tfr != null) && (irldpc != null) && (dcr != null) && (ldpRoot != null)) {
       "true"
     } else {
       "false"
-    }
+    }).header("Cache-Control", "private, max-age=0, no-cache").build();
   }
 
   @POST
