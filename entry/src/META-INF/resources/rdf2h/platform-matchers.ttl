@@ -22,8 +22,22 @@
 	    r2h:context r2h:Default;
 	    r2h:mustache '''
 	    
-	        Title: {{dc:title}}<br/>
+	        <h1>{{dc:title}} (P3 Platform)</h1>
 	        URI: {{.}}<br/>
+	        {{#fp3:dashboard}}
+	        <p>Check out the <a href="{{.}}">Dashboard</a> which allows access
+                to most of the functionality of the P3 Platform.</p>
+            <div class="promoted"><a href="{{.}}">Go to the dashboard</a></div>
+            {{/fp3:dashboard}}
+            {{#+fp3:app}}
+            	<h3>Applications</h3>
+            	<p>P3 apps are applications that use the functionality provided by a P3 platform.</p>
+            	<ul>
+		        {{#fp3:app}}
+		        	<li>Application URI: <a href="{{.}}">{{.}}</a></li>
+	            {{/fp3:app}}
+	            </ul>
+            {{/+fp3:app}}
 	        <h3>Registered Transformer Factory UIs</h3>
 	        {{#fp3:transformerFactoryRegistry}}
 	    	    Transformer Factory Registry: {{.}}<br />
@@ -35,12 +49,9 @@
 	        	<div resource="{{.}}" class="fetch">tfr</div>
 	        {{/fp3:transformerRegistry}}
 	        Sparql Endpoint: {{fp3:sparqlEndpoint}}<br />
-	        {{#+fp3:userInteractionRegistry}}
-	        	User Interaction Request Registry: {{fp3:userInteractionRegistry}}
-	        {{/+fp3:userInteractionRegistry}}
-	        {{#fp3:dashboard}}
-	        	Dashboard: {{.}}<br />
-	        {{/fp3:dashboard}}
+	        {{#+fp3:userInteractionRequestRegistry}}
+	        	User Interaction Request Registry: {{fp3:userInteractionRequestRegistry}}
+	        {{/+fp3:userInteractionRequestRegistry}}
 	        '''
 	];
 	r2h:before <ldpc>.

@@ -4,7 +4,7 @@ function PlatformEntryConfigurator(baseUri) {
 }
 
 /**
- * returns a promise that if fullfilled with confitional if the backend
+ * returns a promise that is fullfilled with conditional if the backend
  * is not yet fully configured, a fulfilled promise otherwise 
  */
 PlatformEntryConfigurator.prototype.ifUnconfigured = function(conditional) {
@@ -69,6 +69,14 @@ PlatformEntryConfigurator.prototype.registerDashboard = function(dashboard) {
 	var configurator = this;
 	return $.post(this.baseUri+"registerDashboard", dashboard, function(data, textstatus) {
 		console.log("Registering dashboard" +dashboard+" with: "+configurator.baseUri+". Status: "+textstatus);
+	})
+}
+
+//TODO add support for description
+PlatformEntryConfigurator.prototype.registerApplication = function(application) {
+	var configurator = this;
+	return $.post(this.baseUri+"registerApplication", application, function(data, textstatus) {
+		console.log("Registering application" +application+" with: "+configurator.baseUri+". Status: "+textstatus);
 	})
 }
 

@@ -22,7 +22,8 @@ class RootResource {
   var dcr: IRI = null;
   var ldpRoot: IRI = null;
   var sparqlEndpoint: IRI = null;
-  var dashboards: Set[IRI] = scala.collection.mutable.HashSet[IRI]();
+  val dashboards: Set[IRI] = scala.collection.mutable.HashSet[IRI]();
+  val applications: Set[IRI] = scala.collection.mutable.HashSet[IRI]();
 
   @GET
   def hello(@Context uriInfo: UriInfo) =
@@ -58,6 +59,10 @@ class RootResource {
         (
           dashboards.foreach {
             dashboard => resource -- FP3.dashboard --> dashboard
+          })
+        (
+          applications.foreach {
+            application => resource -- FP3.app --> application
           })
 
       };
@@ -135,5 +140,16 @@ class RootResource {
       throw new WebApplicationException("Currently only one dashboard may be set", Status.FORBIDDEN)
     }
     this.dashboards += dashboard.iri
+    println("dashboard added: "+dashboard);
+  }
+  
+  @POST
+  @Path("registerApplication")
+  def addApplication(application: String) = {
+    if (this.applications.size != 0) {
+      throw new WebApplicationException("Currently only one app may be set", Status.FORBIDDEN)
+    }
+    this.applications += application.iri
+    println("app added: "+application);
   }
 }
