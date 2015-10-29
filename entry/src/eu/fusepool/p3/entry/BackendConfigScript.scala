@@ -11,10 +11,9 @@ import eu.fusepool.p3.vocab.FP3
 import Preamble._
 import java.io.InputStreamReader
 
-
 /**
  * This JAX-RS resource returns a js-script to configure the backend, i.e. to create the various registries.
- * 
+ *
  * If an environment vraiable `P3-BACKEND-CONFIG-JS`is specified, the script at that path is used.
  */
 @Component(service = Array(classOf[Object]), property = Array("javax.ws.rs=true"))
@@ -23,7 +22,7 @@ class BackendconfigScript {
 
   @GET
   def getScript = {
-      //TODO check env variable
-      new InputStreamReader(classOf[BackendconfigScript].getResourceAsStream("default-backend-config.js"))
-    }
+    //TODO check env variable
+    new InputStreamReader(classOf[BackendconfigScript].getResourceAsStream("default-backend-config.js"))
+  }
 }
