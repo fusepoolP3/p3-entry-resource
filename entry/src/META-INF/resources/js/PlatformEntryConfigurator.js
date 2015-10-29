@@ -9,7 +9,8 @@ function PlatformEntryConfigurator(baseUri) {
  */
 PlatformEntryConfigurator.prototype.ifUnconfigured = function(conditional) {
 	var configurator = this;
-	var configuredRequest = $.get(this.baseUri+"fullyConfigured");
+	//actually the server response heade should be enough to guarantee the correct caching
+	var configuredRequest =  $.ajax({url: this.baseUri+"fullyConfigured", cache: false});
 	return new Promise(function(resolve, reject) {
 		configuredRequest.done(function (response) {
 			if (response === "true") {
