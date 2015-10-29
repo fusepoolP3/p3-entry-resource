@@ -36,7 +36,7 @@
 		        {{#fp3:app}}
 		        	 
 		        	<li><div><h4><a href="{{dct:subject}}">{{rdfs:label}}</a></h4>
-		        	<div>{{dct:description}}</div>
+		        	<div>{{{dct:description}}}</div>
 		        	Application URI: {{dct:subject}}</div></li>
 	            {{/fp3:app}}
 	            </ul>
