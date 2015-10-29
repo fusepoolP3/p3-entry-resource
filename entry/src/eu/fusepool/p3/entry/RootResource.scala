@@ -16,6 +16,8 @@ import scala.collection.mutable._
 @Path("")
 class RootResource {
 
+  var locked = false;
+  
   var tr: IRI = null;
   var irldpc: IRI = null;
   var tfr: IRI = null;
@@ -80,8 +82,20 @@ class RootResource {
   }
 
   @POST
+  @Path("lock")
+  def lock() = {
+    if (locked) {
+      throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
+    }
+    locked = true;
+  }
+  
+  @POST
   @Path("tr")
   def setTr(tr: String) = {
+    if (locked) {
+      throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
+    }
     if (this.tr != null) {
       throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
     }
@@ -91,6 +105,9 @@ class RootResource {
   @POST
   @Path("tfr")
   def setTfr(tfr: String) = {
+    if (locked) {
+      throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
+    }
     if (this.tfr != null) {
       throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
     }
@@ -100,6 +117,9 @@ class RootResource {
   @POST
   @Path("irldpc")
   def setIrldpc(irldpc: String) = {
+    if (locked) {
+      throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
+    }
     if (this.irldpc != null) {
       throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
     }
@@ -109,6 +129,9 @@ class RootResource {
   @POST
   @Path("dcr")
   def setDcr(dcr: String) = {
+    if (locked) {
+      throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
+    }
     if (this.dcr != null) {
       throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
     }
@@ -118,6 +141,9 @@ class RootResource {
   @POST
   @Path("registerLdpRoot")
   def setLdpRoot(ldpRoot: String) = {
+    if (locked) {
+      throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
+    }
     if (this.ldpRoot != null) {
       throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
     }
@@ -127,6 +153,9 @@ class RootResource {
   @POST
   @Path("registerSparql")
   def setSparqlEndpoint(sparqlEndpoint: String) = {
+    if (locked) {
+      throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
+    }
     if (this.sparqlEndpoint != null) {
       throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
     }
@@ -136,8 +165,8 @@ class RootResource {
   @POST
   @Path("registerDashboard")
   def addDashboard(dashboard: String) = {
-    if (this.dashboards.size != 0) {
-      throw new WebApplicationException("Currently only one dashboard may be set", Status.FORBIDDEN)
+    if (locked) {
+      throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
     }
     this.dashboards += dashboard.iri
     println("dashboard added: "+dashboard);
@@ -146,8 +175,8 @@ class RootResource {
   @POST
   @Path("registerApplication")
   def addApplication(application: String) = {
-    if (this.applications.size != 0) {
-      throw new WebApplicationException("Currently only one app may be set", Status.FORBIDDEN)
+    if (locked) {
+      throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
     }
     this.applications += application.iri
     println("app added: "+application);

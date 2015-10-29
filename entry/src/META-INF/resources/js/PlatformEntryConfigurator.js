@@ -80,4 +80,11 @@ PlatformEntryConfigurator.prototype.registerApplication = function(application) 
 	})
 }
 
+PlatformEntryConfigurator.prototype.lock = function() {
+	var configurator = this;
+	return $.post(this.baseUri+"lock", "", function(data, textstatus) {
+		console.log("Locked: "+configurator.baseUri+". Status: "+textstatus);
+	})
+}
+
 
