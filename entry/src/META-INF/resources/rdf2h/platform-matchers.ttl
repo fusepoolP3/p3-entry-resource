@@ -21,7 +21,7 @@
 	r2h:template [ 
 	    r2h:context r2h:Default;
 	    r2h:mustache '''
-	    
+	    	<img id="mainLogo" src="/images/fusepool-logo-p3.png" alt="Fusepool P3" />
 	        <h1>{{dc:title}} (P3 Platform)</h1>
 	        URI: {{.}}<br/>
 	        {{#fp3:dashboard}}
