@@ -73,10 +73,14 @@ PlatformEntryConfigurator.prototype.registerDashboard = function(dashboard) {
 }
 
 //TODO add support for description
-PlatformEntryConfigurator.prototype.registerApplication = function(application) {
+PlatformEntryConfigurator.prototype.registerApplication = function(iri, label, description) {
 	var configurator = this;
-	return $.post(this.baseUri+"registerApplication", application, function(data, textstatus) {
-		console.log("Registering application" +application+" with: "+configurator.baseUri+". Status: "+textstatus);
+	return $.post(this.baseUri+"registerApplication", {
+			'iri' : iri,
+			'label': label,
+			'description': description
+			}, function(data, textstatus) {
+		console.log("Registering application" +label+" ("+iri+") with: "+configurator.baseUri+". Status: "+textstatus);
 	})
 }
 

@@ -34,7 +34,10 @@
             	<p>P3 apps are applications that use the functionality provided by a P3 platform.</p>
             	<ul>
 		        {{#fp3:app}}
-		        	<li>Application URI: <a href="{{.}}">{{.}}</a></li>
+		        	 
+		        	<li><div><h4><a href="{{dct:subject}}">{{rdfs:label}}</a></h4>
+		        	<div>{{dct:description}}</div>
+		        	Application URI: {{dct:subject}}</div></li>
 	            {{/fp3:app}}
 	            </ul>
             {{/+fp3:app}}

@@ -3,6 +3,40 @@
 
 This project delivers the entry resource for a P3 platform instance.
 
+What is a *P3 platform instance*? A P3 platform is a set of web and linked data
+applications that allows the user to transform and store data using the Linked 
+Data Platform (LDP) standard as well as the 
+[Transforming Container API](https://github.com/fusepoolP3/overall-architecture/blob/master/transforming-container-api.md). 
+
+What is the the *entry resource*? That's the Linked Data resource that links to 
+the web and linked applications that constitute the platform instance.
+
+So what is this project about? This project provides the web application that 
+returns an RDF description of a platform instance. It also provides and HTML
+representation of the platform which uses [LD2h](https://github.com/rdf2h/ld2h) to render the platform using 
+[RDF2h](https://github.com/rdf2h/rdf2h) templates.
+
+Without cloning the repository or compiling the project you can run the application
+with docker:
+
+    docker run --rm -ti -p 80:8080 fusepoolp3/entry-resource
+
+The first access to the service using a JavaScript capable client will configure 
+the platform instance. For that it uses the hostname of the request, so it is
+important to use the correct hostname on the first request for the platform resource.
+
+Starting P3 Entry Resource with the above command will use a default configuration
+script that configure a new platform instance using services of the [Platform 
+Reference Implementation](https://github.com/fusepoolP3/p3-platform-reference-implementation) 
+instance on `sandbox.fusepool.info`.
+
+Normally you want to provide your own configuration script. With docker you can 
+provide a  backend-config.js configuration script as follows. Run the docker 
+image from the directory with your `backend-config.js` file:
+
+    docker run --rm v $(pwd):/etc/fusepool-p3/ -p 80:8080 fusepoolp3/entry-resource 
+
+
 ## Cloning
 
 Use the `--recursive` option when cloning this repo to make sure submodules are cloned too.
@@ -27,7 +61,7 @@ To use the built build above and launch it on port 80:
     
 To use the version from dockerhub
 
-    docker run --rm -ti -p 8081:8080 fusepoolp3/entry-resource
+    docker run --rm -ti -p 80:8080 fusepoolp3/entry-resource
     
 ### Eclipse
 

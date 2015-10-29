@@ -16,6 +16,12 @@ import scala.collection.mutable._
 @Path("")
 class RootResource {
 
+  trait Application {
+    def iri: IRI;
+    def label: String;
+    def description: String;
+  }
+  
   var locked = false;
   
   var tr: IRI = null;
@@ -25,10 +31,10 @@ class RootResource {
   var ldpRoot: IRI = null;
   var sparqlEndpoint: IRI = null;
   val dashboards: Set[IRI] = scala.collection.mutable.HashSet[IRI]();
-  val applications: Set[IRI] = scala.collection.mutable.HashSet[IRI]();
+  val applications: Set[Application] = scala.collection.mutable.HashSet[Application]();
 
   @GET
-  def hello(@Context uriInfo: UriInfo) =
+  def platformResource(@Context uriInfo: UriInfo) =
     {
       val resource = uriInfo.getRequestUri().toString().iri;
       val g = new EzGraph() {
@@ -64,7 +70,13 @@ class RootResource {
           })
         (
           applications.foreach {
-            application => resource -- FP3.app --> application
+            application => {
+              resource -- FP3.app --> ( 
+                 bnode -- DCTERMS.subject --> application.iri
+                       -- RDFS.label --> application.label
+                       -- DCTERMS.description --> application.description
+              )
+            }
           })
 
       };
@@ -174,11 +186,16 @@ class RootResource {
   
   @POST
   @Path("registerApplication")
-  def addApplication(application: String) = {
+  def addApplication(@FormParam("iri") application: String, @FormParam("label") _label: String, 
+      @FormParam("description") _description: String) = {
     if (locked) {
       throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
     }
-    this.applications += application.iri
+    this.applications += new Application {
+      def iri = application.iri;
+      def label = _label;
+      def description = _description;
+    }
     println("app added: "+application);
   }
 }
