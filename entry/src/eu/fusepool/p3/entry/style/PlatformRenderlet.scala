@@ -7,6 +7,7 @@ import org.apache.clerezza.rdf.utils._
 import org.apache.clerezza.rdf.scala.utils.Preamble._
 import org.apache.clerezza.platform.typerendering.scala._
 import org.osgi.service.component.annotations._
+import eu.fusepool.p3.entry.BootScripts
 import eu.fusepool.p3.vocab.FP3
 
 /**
@@ -14,6 +15,9 @@ import eu.fusepool.p3.vocab.FP3
  */
 @Component(service = Array(classOf[TypeRenderlet]))
 class ResourceRenderlet extends SRenderlet {
+  
+  @Reference
+  var bootScripts: BootScripts = null 
 
   val getRdfType = FP3.Platform
 
@@ -43,8 +47,13 @@ class ResourceRenderlet extends SRenderlet {
 						<script src="/js/rdfstore/rdfstore.js"></script>
 						<script src="/js/p3-platform-js/p3-platform-js.js"></script>
 						<script src="/js/PlatformEntryConfigurator.js"></script>
-						<script src="/js/backend-config.js"></script>   
-            <script src="/js/entry.js"></script>
+						{
+						  for (script <- bootScripts.scriptList.sorted) yield {
+						    <script src={ "js/boot-scripts/"+script }></script>
+						    
+						  }
+						}
+						<script src="/js/entry.js"></script>
           </head>
           <body>
 				<div id="wait">

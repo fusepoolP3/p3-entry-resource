@@ -32,9 +32,9 @@ instance on `sandbox.fusepool.info`.
 
 Normally you want to provide your own configuration script. With docker you can 
 provide a  backend-config.js configuration script as follows. Run the docker 
-image from the directory with your `backend-config.js` file:
+image from the directory with your `01-backend-config.js` file:
 
-    docker run --rm v $(pwd):/etc/fusepool-p3/ -p 80:8080 fusepoolp3/entry-resource 
+    docker run --rm v $(pwd):/etc/fusepool-p3/boot/scripts/ -p 80:8080 fusepoolp3/entry-resource 
 
 
 ## Cloning
