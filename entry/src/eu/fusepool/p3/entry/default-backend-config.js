@@ -40,8 +40,8 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 	        async: true
 	    });
 	
-		var registrations = [];
-		registrations.push(putIrldpcRequest.then(function () {
+		var ldpDependetRgistrations = [];
+		ldpDependetRgistrations.push(putIrldpcRequest.then(function () {
 			return platformEntryConfigurator.registerIRLDPC(irldpcUri);
 		}));
 		
@@ -55,7 +55,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
             async: true
         });
 		
-		registrations.push(putTfrRequest.then(function () {
+		ldpDependetRgistrations.push(putTfrRequest.then(function () {
 			return platformEntryConfigurator.registerTFR(tfrUri);
 		}));
 		
@@ -69,7 +69,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
             async: true
         });
 		
-		registrations.push(putTrRequest.then(function () {
+		ldpDependetRgistrations.push(putTrRequest.then(function () {
 			return platformEntryConfigurator.registerTR(trUri);
 		}));
 		
@@ -83,39 +83,40 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
             async: true
         });
 		
-		registrations.push(putDcrRequest.then(function () {
+		ldpDependetRgistrations.push(putDcrRequest.then(function () {
 			return platformEntryConfigurator.registerDCR(dcrUri);
 		}));
 		
+		return Promise.all(ldpDependetRgistrations).then(function() {
+			var registrations = [];
+			registrations.push(platformEntryConfigurator.registerSparql("http://sandbox.fusepool.info:8181/sparql/select"));
+			
+			registrations.push(platformEntryConfigurator.registerLdpRoot("http://sandbox.fusepool.info:8181/ldp/"));
+			
+			registrations.push(platformEntryConfigurator.registerDashboard("http://sandbox.fusepool.info:8200/?platformURI="+window.location));
+			registrations.push(platformEntryConfigurator.registerApplication("http://sandbox.fusepool.info:8205/?platformURI="+window.location, 
+					"P3 Resource GUI",
+					"This is a graphical user interface to deal with Linked-Data-Platform-Collections."));
+			
+			registrations.push(platformEntryConfigurator.registerApplication("http://sandbox.fusepool.info:8151/?transformer=http%3A%2F%2Fsandbox.fusepool.info%3A8301%2F%3Ftaxonomy%3Dhttp%3A%2F%2Fdata.nytimes.com%2Fdescriptors.rdf&resource=http://www.bbc.com/news/science-environment-30005268", 
+					"Transformer web client",
+					"With the provided parameter it transforms the resource at <code>http://www.bbc.com/news/science-environment-30005268</code> using the transformer at <code>http://sandbox.fusepool.info:8301/?taxonomy=http%3A%2F%2Fdata.nytimes.com%2Fdescriptors.rdf</code>"));
 		
-		registrations.push(platformEntryConfigurator.registerSparql("http://sandbox.fusepool.info:8181/sparql/select"));
-		
-		registrations.push(platformEntryConfigurator.registerLdpRoot("http://sandbox.fusepool.info:8181/ldp/"));
-		
-		registrations.push(platformEntryConfigurator.registerDashboard("http://sandbox.fusepool.info:8200/?platformURI="+window.location));
-		registrations.push(platformEntryConfigurator.registerApplication("http://sandbox.fusepool.info:8205/?platformURI="+window.location, 
-				"P3 Resource GUI",
-				"This is a graphical user interface to deal with Linked-Data-Platform-Collections."));
-		
-		registrations.push(platformEntryConfigurator.registerApplication("http://sandbox.fusepool.info:8151/?transformer=http%3A%2F%2Fsandbox.fusepool.info%3A8301%2F%3Ftaxonomy%3Dhttp%3A%2F%2Fdata.nytimes.com%2Fdescriptors.rdf&resource=http://www.bbc.com/news/science-environment-30005268", 
-				"Transformer web client",
-				"With the provided parameter it transforms the resource at <code>http://www.bbc.com/news/science-environment-30005268</code> using the transformer at <code>http://sandbox.fusepool.info:8301/?taxonomy=http%3A%2F%2Fdata.nytimes.com%2Fdescriptors.rdf</code>"));
-	
-		var platformPreparation = Promise.all(registrations);
-		return platformPreparation.then(function() {
-			return P3Platform.getPlatform(window.location).then(function(platform) {
-				platformEntryConfigurator.lock();
-				platform.transformerRegistry.registerTransformer("http://sandbox.fusepool.info:8303/", "Any23 Transformer", "Transform data using Apache Any23");
-				platform.transformerFactoryRegistry.registerTransformerFactory(
-                        "http://sandbox.fusepool.info:8201/?transformerBase=http://sandbox.fusepool.info:8300&platformURI="+window.location, "Pipeline UI", "Allows to create pipeline transformers.");
-                platform.transformerFactoryRegistry.registerTransformerFactory(
-                        "http://sandbox.fusepool.info:8202/?transformerBase=http://sandbox.fusepool.info:8301&platformURI="+window.location, "Dictionary Matcher UI", "Allows to create dictionary matcher transformers.");
-                platform.transformerFactoryRegistry.registerTransformerFactory(
-                        "http://sandbox.fusepool.info:8203/?transformerBase=http://sandbox.fusepool.info:8310&platformURI="+window.location, "Batchrefine UI", "Allows to create transformers using Openrefine configurations.");
-                platform.transformerFactoryRegistry.registerTransformerFactory(
-                        "http://sandbox.fusepool.info:8204/?transformerBase=http://sandbox.fusepool.info:8307&platformURI="+window.location, "XSLT Transformer UI", "Allows to create XSLT transformers.");
+			var platformPreparation = Promise.all(registrations);
+			return platformPreparation.then(function() {
+				return P3Platform.getPlatform(window.location).then(function(platform) {
+					platformEntryConfigurator.lock();
+					platform.transformerRegistry.registerTransformer("http://sandbox.fusepool.info:8303/", "Any23 Transformer", "Transform data using Apache Any23");
+					platform.transformerFactoryRegistry.registerTransformerFactory(
+	                        "http://sandbox.fusepool.info:8201/?transformerBase=http://sandbox.fusepool.info:8300&platformURI="+window.location, "Pipeline UI", "Allows to create pipeline transformers.");
+	                platform.transformerFactoryRegistry.registerTransformerFactory(
+	                        "http://sandbox.fusepool.info:8202/?transformerBase=http://sandbox.fusepool.info:8301&platformURI="+window.location, "Dictionary Matcher UI", "Allows to create dictionary matcher transformers.");
+	                platform.transformerFactoryRegistry.registerTransformerFactory(
+	                        "http://sandbox.fusepool.info:8203/?transformerBase=http://sandbox.fusepool.info:8310&platformURI="+window.location, "Batchrefine UI", "Allows to create transformers using Openrefine configurations.");
+	                platform.transformerFactoryRegistry.registerTransformerFactory(
+	                        "http://sandbox.fusepool.info:8204/?transformerBase=http://sandbox.fusepool.info:8307&platformURI="+window.location, "XSLT Transformer UI", "Allows to create XSLT transformers.");
+				});
 			});
 		});
-
 	});
 };
