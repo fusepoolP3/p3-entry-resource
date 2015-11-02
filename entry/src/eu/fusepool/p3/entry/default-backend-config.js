@@ -106,15 +106,17 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 			return platformPreparation.then(function() {
 				return P3Platform.getPlatform(window.location).then(function(platform) {
 					platformEntryConfigurator.lock();
-					platform.transformerRegistry.registerTransformer("http://sandbox.fusepool.info:8303/", "Any23 Transformer", "Transform data using Apache Any23");
-					platform.transformerFactoryRegistry.registerTransformerFactory(
-	                        "http://sandbox.fusepool.info:8201/?transformerBase=http://sandbox.fusepool.info:8300&platformURI="+window.location, "Pipeline UI", "Allows to create pipeline transformers.");
-	                platform.transformerFactoryRegistry.registerTransformerFactory(
-	                        "http://sandbox.fusepool.info:8202/?transformerBase=http://sandbox.fusepool.info:8301&platformURI="+window.location, "Dictionary Matcher UI", "Allows to create dictionary matcher transformers.");
-	                platform.transformerFactoryRegistry.registerTransformerFactory(
-	                        "http://sandbox.fusepool.info:8203/?transformerBase=http://sandbox.fusepool.info:8310&platformURI="+window.location, "Batchrefine UI", "Allows to create transformers using Openrefine configurations.");
-	                platform.transformerFactoryRegistry.registerTransformerFactory(
-	                        "http://sandbox.fusepool.info:8204/?transformerBase=http://sandbox.fusepool.info:8307&platformURI="+window.location, "XSLT Transformer UI", "Allows to create XSLT transformers.");
+					var platformRegsitrations = [];
+					platformRegsitrations.push(platform.transformerRegistry.registerTransformer("http://sandbox.fusepool.info:8303/", "Any23 Transformer", "Transform data using Apache Any23"));
+					platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+	                        "http://sandbox.fusepool.info:8201/?transformerBase=http://sandbox.fusepool.info:8300&platformURI="+window.location, "Pipeline UI", "Allows to create pipeline transformers."));
+					platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+	                        "http://sandbox.fusepool.info:8202/?transformerBase=http://sandbox.fusepool.info:8301&platformURI="+window.location, "Dictionary Matcher UI", "Allows to create dictionary matcher transformers."));
+					platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+	                        "http://sandbox.fusepool.info:8203/?transformerBase=http://sandbox.fusepool.info:8310&platformURI="+window.location, "Batchrefine UI", "Allows to create transformers using Openrefine configurations."));
+					platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+	                        "http://sandbox.fusepool.info:8204/?transformerBase=http://sandbox.fusepool.info:8307&platformURI="+window.location, "XSLT Transformer UI", "Allows to create XSLT transformers."));
+	                return Promise.all(platformRegsitrations);
 				});
 			});
 		});
