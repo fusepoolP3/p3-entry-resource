@@ -13,7 +13,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 		//in a distribution we should resolve with the hard code ldp root
 		var postTfrRequest = $.ajax({type: 'POST',
 	        url: "http://sandbox.fusepool.info:8181/ldp",
-	        headers: {'Content-Type': 'text/turtle', 'Slug': "test-config"},
+	        headers: {'Content-Type': 'text/turtle', 'Slug': "test-config", 'Link': "<http://www.w3.org/ns/ldp#BasicContainer>; rel='type'"},
 	        async: true,
 	        data: '<> a <http://www.w3.org/ns/ldp#BasicContainer> ; ' +
 	        ' <http://www.w3.org/2000/01/rdf-schema#label> "The LDP root for a test instance"@en . ',
@@ -33,7 +33,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 		var irldpcUri = baseURI + '/uir';
 		var putIrldpcRequest = $.ajax({type: 'PUT',
 	        url: irldpcUri,
-	        headers: {'Content-Type': 'text/turtle'},
+	        headers: {'Content-Type': 'text/turtle', 'Link': "<http://www.w3.org/ns/ldp#BasicContainer>; rel='type'"},
 	        data: '<> a <http://www.w3.org/ns/ldp#BasicContainer> ; ' +
 	                ' <http://www.w3.org/2000/01/rdf-schema#label> "Interaction Request Container"@en ; ' +
 	                ' <http://www.w3.org/2000/01/rdf-schema#comment> "Contains Interaction Requests"@en . ',
@@ -48,7 +48,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 		var tfrUri = baseURI + '/tfr';
 		var putTfrRequest = $.ajax({type: 'PUT',
             url: tfrUri,
-            headers: {'Content-Type': 'text/turtle'},
+            headers: {'Content-Type': 'text/turtle', 'Link': "<http://www.w3.org/ns/ldp#BasicContainer>; rel='type'"},
             data: '<> a <http://www.w3.org/ns/ldp#BasicContainer> ; ' +
                     ' <http://www.w3.org/2000/01/rdf-schema#label> "Transformer Factory Registry"@en ; ' +
                     ' <http://www.w3.org/2000/01/rdf-schema#comment> "Contains Transformer Factories"@en . ',
@@ -62,7 +62,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 		var trUri = baseURI + '/tr';
 		var putTrRequest = $.ajax({type: 'PUT',
             url: trUri,
-            headers: {'Content-Type': 'text/turtle'},
+            headers: {'Content-Type': 'text/turtle', 'Link': "<http://www.w3.org/ns/ldp#BasicContainer>; rel='type'"},
             data: '<> a <http://www.w3.org/ns/ldp#BasicContainer> ; ' +
                     ' <http://www.w3.org/2000/01/rdf-schema#label> "Transformer Registry"@en ; ' +
                     ' <http://www.w3.org/2000/01/rdf-schema#comment> "Contains Transformers"@en . ',
@@ -76,7 +76,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function(platformEntry
 		var dcrUri = baseURI + '/dcr';
 		var putDcrRequest = $.ajax({type: 'PUT',
             url: dcrUri,
-            headers: {'Content-Type': 'text/turtle'},
+            headers: {'Content-Type': 'text/turtle', 'Link': "<http://www.w3.org/ns/ldp#BasicContainer>; rel='type'"},
             data: '<> a <http://www.w3.org/ns/ldp#BasicContainer> ; ' +
                     ' <http://www.w3.org/2000/01/rdf-schema#label> "Dashboard Config Registry"@en ; ' +
                     ' <http://www.w3.org/2000/01/rdf-schema#comment> "Contains dashboard configurations"@en . ',
