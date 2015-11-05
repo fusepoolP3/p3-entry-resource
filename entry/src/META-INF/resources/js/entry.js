@@ -6,7 +6,7 @@ $(function() {
 	});
 	LD2h.store = store;
 	var configurator = new PlatformEntryConfigurator(window.location);
-	new P3BackendConfigurator().initialize(configurator)
+	P3BackendConfigurator.initialize(configurator)
 			.then(
 				function() {
 					localStorage.setItem("refreshCount", 0);
