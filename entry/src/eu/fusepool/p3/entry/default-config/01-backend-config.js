@@ -35,8 +35,9 @@ P3BackendConfigurator.prototype.getLdpRoot = function() {
 }
 
 P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
+	var ldpBaseURI = ldpRoot.endsWith('/') ? ldpRoot : ldpRoot+'/';
 	var self = this;
-	var irldpcUri = ldpRoot + '/uir';
+	var irldpcUri = ldpBaseURI + 'uir';
 	var putIrldpcRequest = $.ajax({type: 'PUT',
         url: irldpcUri,
         headers: {'Content-Type': 'text/turtle', 'Link': "<http://www.w3.org/ns/ldp#BasicContainer>; rel='type'"},
@@ -51,7 +52,7 @@ P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
 		return self.platformEntryConfigurator.registerIRLDPC(irldpcUri);
 	}));
 	
-	var tfrUri = ldpRoot + '/tfr';
+	var tfrUri = ldpBaseURI + 'tfr';
 	var putTfrRequest = $.ajax({type: 'PUT',
         url: tfrUri,
         headers: {'Content-Type': 'text/turtle', 'Link': "<http://www.w3.org/ns/ldp#BasicContainer>; rel='type'"},
@@ -65,7 +66,7 @@ P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
 		return self.platformEntryConfigurator.registerTFR(tfrUri);
 	}));
 	
-	var trUri = ldpRoot + '/tr';
+	var trUri = ldpBaseURI + 'tr';
 	var putTrRequest = $.ajax({type: 'PUT',
         url: trUri,
         headers: {'Content-Type': 'text/turtle', 'Link': "<http://www.w3.org/ns/ldp#BasicContainer>; rel='type'"},
@@ -79,7 +80,7 @@ P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
 		return self.platformEntryConfigurator.registerTR(trUri);
 	}));
 	
-	var dcrUri = ldpRoot + '/dcr';
+	var dcrUri = ldpBaseURI + 'dcr';
 	var putDcrRequest = $.ajax({type: 'PUT',
         url: dcrUri,
         headers: {'Content-Type': 'text/turtle', 'Link': "<http://www.w3.org/ns/ldp#BasicContainer>; rel='type'"},
