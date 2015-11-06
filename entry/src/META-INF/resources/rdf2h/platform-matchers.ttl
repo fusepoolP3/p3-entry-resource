@@ -52,6 +52,7 @@
 	        	<div resource="{{.}}" class="fetch">tfr</div>
 	        {{/fp3:transformerRegistry}}
 	        Sparql Endpoint: {{fp3:sparqlEndpoint}}<br />
+	        LDP Root: {{fp3:ldpRoot}}<br />
 	        {{#+fp3:userInteractionRequestRegistry}}
 	        	User Interaction Request Registry: {{fp3:userInteractionRequestRegistry}}
 	        {{/+fp3:userInteractionRequestRegistry}}
