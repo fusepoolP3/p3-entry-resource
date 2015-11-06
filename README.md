@@ -36,7 +36,16 @@ image from the directory with your `01-backend-config.js` file:
 
     docker run --rm -v $(pwd):/etc/fusepool-p3/boot-scripts/ -p 80:8080 fusepoolp3/entry-resource 
 
-When launched `p3-entry-resource` will check for configuration scripts in `~/.fusepool-p3/boot-script`, in `/etc/fusepool-p3/boot-scripts/` as well as its internal resource folder [src/eu/fusepool/p3/entry/default-config/](entry/src/eu/fusepool/p3/entry/default-config/). In the above example we simply override the built-in `01-backend-config.js`, but we could also instead add additional scripts that selectively modify the default configuration class.
+When launched `p3-entry-resource` will check for configuration scripts in `~/.fusepool-p3/boot-script`, in `/etc/fusepool-p3/boot-scripts/` as well as its internal resource folder [src/eu/fusepool/p3/entry/default-config/](entry/src/eu/fusepool/p3/entry/default-config/). In the above example we override the built-in `01-backend-config.js` in full, this script has to implemement a function`P3BackendConfigurator.initialize` taht gets an [PlatformEntryConfigurator](entry/src/META-INF/resources/js/PlatformEntryConfigurator.js) instance as argument and returns a promise that is fulfilled when the platform is configured. To configure the platform the configuration script should invoke the methods provided by the `PlatformEntryConfigurator` instance. 
+
+Rather than fully replacing the configuration scxript we can also instead add additional scripts that selectively modify the default configuration class, this typically makes our script much shorter by avoiding code duplication.
+
+Typically one would override one or several of the following:
+
+* P3BackendConfigurator.prototype.serviceHost: a string with the hostname
+* P3BackendConfigurator.prototype.getLdpRoot: a function returning a promise for the LDP Root
+* P3BackendConfigurator.prototype.registerRegistries: a function retuning a promise that is fullfilled when the various registries are registered
+* P3BackendConfigurator.prototype.registerBackendfeatures: a function returning a promise that is fulfilled when the LDP-Root and the SPARQL Endpoint are registered
 
 
 ## Cloning
