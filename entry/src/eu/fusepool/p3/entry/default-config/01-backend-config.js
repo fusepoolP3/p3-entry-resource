@@ -134,7 +134,7 @@ P3BackendConfigurator.prototype.registerTransfomersAndFactories = function(platf
 P3BackendConfigurator.prototype.unconditionedInitialize = function() {
 	var self = this;
 	return this.getLdpRoot().then(function(ldpRoot) { 
-		self.registerRegistries(ldpRoot).then(function() {
+		return self.registerRegistries(ldpRoot).then(function() {
 			var registrations = [];
 			registrations.push(self.registerBackendfeatures(ldpRoot));
 			registrations.push(self.registerApplications(ldpRoot));
