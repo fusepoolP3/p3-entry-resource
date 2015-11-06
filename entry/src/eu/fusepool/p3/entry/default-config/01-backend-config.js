@@ -99,7 +99,7 @@ P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
 P3BackendConfigurator.prototype.registerBackendfeatures = function(ldpRoot) {
 	var registrations = [];
 	registrations.push(this.platformEntryConfigurator.registerSparql("http://"+this.serviceHost+":8181/sparql/select"));
-	registrations.push(this.platformEntryConfigurator.registerLdpRoot("http://"+this.serviceHost+":8181/ldp/"));
+	registrations.push(this.platformEntryConfigurator.registerLdpRoot(ldpRoot));
 	return Promise.all(registrations);
 }
 
