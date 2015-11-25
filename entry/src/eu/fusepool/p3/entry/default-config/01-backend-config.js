@@ -94,7 +94,13 @@ P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
 		return self.platformEntryConfigurator.registerDCR(dcrUri);
 	}));
 	
-	return Promise.all(ldpDependetRegistrations);
+	return Promise.all(ldpDependetRegistrations).catch( function(error) {
+		if (error.status === 428) {
+			// we assume the precondition failed because it's alrteady there and do nothing
+		} else {
+			throw error;
+		}
+	});
 }
 
 P3BackendConfigurator.prototype.registerBackendfeatures = function(ldpRoot) {
