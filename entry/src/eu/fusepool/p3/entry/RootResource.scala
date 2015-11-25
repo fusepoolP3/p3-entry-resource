@@ -110,9 +110,10 @@ class RootResource {
       throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
     }
     if (this.tr != null) {
-      throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
+      //ignoring double called while not locked
+    } else {
+      this.tr = tr.iri
     }
-    this.tr = tr.iri
   }
 
   @POST
@@ -122,9 +123,10 @@ class RootResource {
       throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
     }
     if (this.tfr != null) {
-      throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
+      //ignoring double called while not locked
+    } else {
+      this.tfr = tfr.iri
     }
-    this.tfr = tfr.iri
   }
 
   @POST
@@ -134,9 +136,10 @@ class RootResource {
       throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
     }
     if (this.irldpc != null) {
-      throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
+      //ignoring double called while not locked
+    } else {
+      this.irldpc = irldpc.iri
     }
-    this.irldpc = irldpc.iri
   }
 
   @POST
@@ -146,9 +149,10 @@ class RootResource {
       throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
     }
     if (this.dcr != null) {
-      throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
+      //ignoring double called while not locked
+    } else {
+      this.dcr = dcr.iri
     }
-    this.dcr = dcr.iri
   }
 
   @POST
@@ -158,9 +162,10 @@ class RootResource {
       throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
     }
     if (this.ldpRoot != null) {
-      throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
+      //ignoring double called while not locked
+    } else {
+      this.ldpRoot = ldpRoot.iri
     }
-    this.ldpRoot = ldpRoot.iri
   }
   
   @POST
@@ -170,9 +175,10 @@ class RootResource {
       throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
     }
     if (this.sparqlEndpoint != null) {
-      throw new WebApplicationException("Field may be set only once", Status.FORBIDDEN)
+      //ignoring double called while not locked
+    } else {
+      this.sparqlEndpoint = sparqlEndpoint.iri
     }
-    this.sparqlEndpoint = sparqlEndpoint.iri
   }
 
   @POST
