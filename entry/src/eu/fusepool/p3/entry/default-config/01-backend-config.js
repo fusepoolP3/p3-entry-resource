@@ -22,7 +22,7 @@ P3BackendConfigurator.prototype.getLdpRoot = function() {
 	        ' <http://www.w3.org/2000/01/rdf-schema#label> "The LDP root for a test instance"@en . ',
 	        contentType: 'text/turtle'
 	    });
-	
+
 	    postTfrRequest.done(function (response, textStatus, responseObj) {
 	        console.info("Created platform LDP Root at" + responseObj.getResponseHeader('Location'));
 	        //configurator.ldpRoot = responseObj.getResponseHeader('Location');
@@ -51,7 +51,7 @@ P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
 	ldpDependetRegistrations.push(putIrldpcRequest.then(function () {
 		return self.platformEntryConfigurator.registerIRLDPC(irldpcUri);
 	}));
-	
+
 	var tfrUri = ldpBaseURI + 'tfr';
 	var putTfrRequest = $.ajax({type: 'PUT',
         url: tfrUri,
@@ -61,11 +61,11 @@ P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
                 ' <http://www.w3.org/2000/01/rdf-schema#comment> "Contains Transformer Factories"@en . ',
         async: true
     });
-	
+
 	ldpDependetRegistrations.push(putTfrRequest.then(function () {
 		return self.platformEntryConfigurator.registerTFR(tfrUri);
 	}));
-	
+
 	var trUri = ldpBaseURI + 'tr';
 	var putTrRequest = $.ajax({type: 'PUT',
         url: trUri,
@@ -75,11 +75,11 @@ P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
                 ' <http://www.w3.org/2000/01/rdf-schema#comment> "Contains Transformers"@en . ',
         async: true
     });
-	
+
 	ldpDependetRegistrations.push(putTrRequest.then(function () {
 		return self.platformEntryConfigurator.registerTR(trUri);
 	}));
-	
+
 	var dcrUri = ldpBaseURI + 'dcr';
 	var putDcrRequest = $.ajax({type: 'PUT',
         url: dcrUri,
@@ -89,11 +89,11 @@ P3BackendConfigurator.prototype.registerRegistries = function(ldpRoot) {
                 ' <http://www.w3.org/2000/01/rdf-schema#comment> "Contains dashboard configurations"@en . ',
         async: true
     });
-	
+
 	ldpDependetRegistrations.push(putDcrRequest.then(function () {
 		return self.platformEntryConfigurator.registerDCR(dcrUri);
 	}));
-	
+
 	return Promise.all(ldpDependetRegistrations).catch( function(error) {
 		if (error.status === 428) {
 			// we assume the precondition failed because it's alrteady there and do nothing
@@ -113,11 +113,11 @@ P3BackendConfigurator.prototype.registerBackendfeatures = function(ldpRoot) {
 P3BackendConfigurator.prototype.registerApplications = function(ldpRoot) {
 	var registrations = [];
 	registrations.push(this.platformEntryConfigurator.registerDashboard("http://"+this.serviceHost+":8200/?platformURI="+window.location));
-	registrations.push(this.platformEntryConfigurator.registerApplication("http://"+this.serviceHost+":8205/?platformURI="+window.location, 
+	registrations.push(this.platformEntryConfigurator.registerApplication("http://"+this.serviceHost+":8205/?platformURI="+window.location,
 			"P3 Resource GUI",
 			"This is a graphical user interface to deal with Linked-Data-Platform-Collections."));
-	
-	registrations.push(this.platformEntryConfigurator.registerApplication("http://"+this.serviceHost+":8151/?transformer=http%3A%2F%2F"+this.serviceHost+"%3A8301%2F%3Ftaxonomy%3Dhttp%3A%2F%2Fdata.nytimes.com%2Fdescriptors.rdf&resource=http://www.bbc.com/news/science-environment-30005268", 
+
+	registrations.push(this.platformEntryConfigurator.registerApplication("http://"+this.serviceHost+":8151/?transformer=http%3A%2F%2F"+this.serviceHost+"%3A8301%2F%3Ftaxonomy%3Dhttp%3A%2F%2Fdata.nytimes.com%2Fdescriptors.rdf&resource=http://www.bbc.com/news/science-environment-30005268",
 			"Transformer web client",
 			"With the provided parameter it transforms the resource at <code>http://www.bbc.com/news/science-environment-30005268</code> using the transformer at <code>http://"+this.serviceHost+":8301/?taxonomy=http%3A%2F%2Fdata.nytimes.com%2Fdescriptors.rdf</code>"));
 
@@ -135,12 +135,14 @@ P3BackendConfigurator.prototype.registerTransfomersAndFactories = function(platf
             "http://"+this.serviceHost+":8203/?transformerBase=http://"+this.serviceHost+":8310&platformURI="+window.location, "Batchrefine UI", "Allows to create transformers using Openrefine configurations."));
 	platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
             "http://"+this.serviceHost+":8204/?transformerBase=http://"+this.serviceHost+":8307&platformURI="+window.location, "XSLT Transformer UI", "Allows to create XSLT transformers."));
-    return Promise.all(platformRegsitrations);
+	platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+					  "http://"+this.serviceHost+":8389/?transformerBase=http://"+this.serviceHost+":8310&platformURI="+window.location, "OpenRefine UI", "Allows to create Batchrefine transformers using OpenRefine UI."));
+		return Promise.all(platformRegsitrations);
 }
 
 P3BackendConfigurator.prototype.unconditionedInitialize = function() {
 	var self = this;
-	return this.getLdpRoot().then(function(ldpRoot) { 
+	return this.getLdpRoot().then(function(ldpRoot) {
 		return self.registerRegistries(ldpRoot).then(function() {
 			var registrations = [];
 			registrations.push(self.registerBackendfeatures(ldpRoot));
