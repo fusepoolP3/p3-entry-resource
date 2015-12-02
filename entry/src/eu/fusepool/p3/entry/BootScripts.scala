@@ -33,28 +33,17 @@ import org.wymiwyg.commons.util.dirbrowser.MultiPathNode
 @Path("js/boot-scripts")
 class BootScripts {
 
-  private val homeDir = new File(System.getProperty("user.home"));
-  
-  private def userConfigDir = new File(homeDir, ".fusepool-p3/boot-scripts/");
-  
-  private def systemConfigDir = new File("/etc/fusepool-p3/boot-scripts/");
+
   
   private var configDir: PathNode = null;
   
   @Activate
   protected def activate(context: BundleContext) {
     val nodes = new scala.collection.mutable.ListBuffer[PathNode]
+    nodes +=  ConfigDirProvider.configDir.getSubPath("boot-scripts");
     val defaultConfigDir = new BundlePathNode(context.getBundle, "eu/fusepool/p3/entry/default-config/");
     nodes +=  defaultConfigDir;
-    if (systemConfigDir.exists()) {
-      val systemConfigNode: PathNode =new FilePathNode(systemConfigDir);
-      nodes += systemConfigNode;
-    }
-    if (userConfigDir.exists()) {
-      val userConfigNode: PathNode =new FilePathNode(userConfigDir);
-      nodes += userConfigNode;
-    }
-    configDir = new MultiPathNode(nodes.toList.reverse:_*);
+    configDir = new MultiPathNode(nodes.toList:_*);
   }
   
   @GET
