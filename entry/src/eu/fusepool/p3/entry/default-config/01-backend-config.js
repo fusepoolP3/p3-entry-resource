@@ -125,19 +125,21 @@ P3BackendConfigurator.prototype.registerApplications = function(ldpRoot) {
 }
 
 P3BackendConfigurator.prototype.registerTransfomersAndFactories = function(platform) {
-	var platformRegsitrations = [];
-	platformRegsitrations.push(platform.transformerRegistry.registerTransformer("http://"+this.serviceHost+":8303/", "Any23 Transformer", "Transform data using Apache Any23"));
-	platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+        var platformRegsitrations = [];
+        platformRegsitrations.push(platform.transformerRegistry.registerTransformer("http://"+this.serviceHost+":8303/", "Any23 Transformer", "Transform data using Apache Any23"));
+        platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
             "http://"+this.serviceHost+":8201/?transformerBase=http://"+this.serviceHost+":8300&platformURI="+window.location, "Pipeline UI", "Allows to create pipeline transformers."));
-	platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+        platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
             "http://"+this.serviceHost+":8202/?transformerBase=http://"+this.serviceHost+":8301&platformURI="+window.location, "Dictionary Matcher UI", "Allows to create dictionary matcher transformers."));
-	platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+        platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
             "http://"+this.serviceHost+":8203/?transformerBase=http://"+this.serviceHost+":8310&platformURI="+window.location, "Batchrefine UI", "Allows to create transformers using Openrefine configurations."));
-	platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+        platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
             "http://"+this.serviceHost+":8204/?transformerBase=http://"+this.serviceHost+":8307&platformURI="+window.location, "XSLT Transformer UI", "Allows to create XSLT transformers."));
-	platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
-					  "http://"+this.serviceHost+":8389/?transformerBase=http://"+this.serviceHost+":8310&platformURI="+window.location, "OpenRefine UI", "Allows to create Batchrefine transformers using OpenRefine UI."));
-		return Promise.all(platformRegsitrations);
+        platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+	    "http://"+this.serviceHost+":8389/?transformerBase=http://"+this.serviceHost+":8310&platformURI="+window.location, "OpenRefine UI", "Allows to create Batchrefine transformers using OpenRefine UI."));
+        platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
+	    "http://"+this.serviceHost+":8206/?transformerBase=http://"+this.serviceHost+":8305&platformURI="+window.location, "Literal Extraction Transformer UI", "Configures a Transformer that allows to extract information from RDF Literals."));
+        return Promise.all(platformRegsitrations);
 }
 
 P3BackendConfigurator.prototype.unconditionedInitialize = function() {
