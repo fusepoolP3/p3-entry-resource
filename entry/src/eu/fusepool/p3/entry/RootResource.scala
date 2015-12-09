@@ -16,6 +16,7 @@ import java.io.File
 import java.io.ObjectOutputStream
 import java.io.FileOutputStream
 import java.io.ObjectStreamClass
+import java.util.Date
 
 
 
@@ -27,7 +28,7 @@ class Application(
   val description: String
  ) extends Serializable {}
 
-@SerialVersionUID(1)
+@SerialVersionUID(2)
 class PlatformConfig extends Serializable{    
   var locked = false;
   var tr: IRI = null;
@@ -36,6 +37,7 @@ class PlatformConfig extends Serializable{
   var dcr: IRI = null;
   var ldpRoot: IRI = null;
   var sparqlEndpoint: IRI = null;
+  var date: Date = null;
   val dashboards: Set[IRI] = scala.collection.mutable.HashSet[IRI]();
   val applications: Set[Application] = scala.collection.mutable.HashSet[Application]();
 }
@@ -66,7 +68,14 @@ class RootResource {
             }
           }
       }
-      platformConfig = ois.readObject.asInstanceOf[PlatformConfig]
+      try {
+        platformConfig = ois.readObject.asInstanceOf[PlatformConfig]
+      } catch {
+        case e: Exception => {
+          System.err.println("WARNING! Could not deserialize "+serializedFileName+". Starting with blank config");
+          platformConfig = new PlatformConfig
+        }
+      }
       ois.close
     } else {
       platformConfig = new PlatformConfig;
@@ -81,6 +90,10 @@ class RootResource {
       val g = new EzGraph() {
         (
           resource.a(FP3.Platform) -- DC.title --> ("Fusepool P3 Instance " + uriInfo.getRequestUri.getHost).lang("en"))
+        (
+          if (platformConfig.date != null) {
+            resource -- DCTERMS.created --> platformConfig.date
+          })
         (
           if (platformConfig.sparqlEndpoint != null) {
             resource -- FP3.sparqlEndpoint --> platformConfig.sparqlEndpoint
@@ -143,6 +156,7 @@ class RootResource {
       if (platformConfig.locked) {
         throw new WebApplicationException("The platform-comfiguration is locked", Status.FORBIDDEN)
       }
+      platformConfig.date = new Date()
       val file = new File(ConfigDirProvider.userConfigDir, serializedFileName);
       val oos = new ObjectOutputStream(new FileOutputStream(file))
       oos.writeObject(platformConfig)

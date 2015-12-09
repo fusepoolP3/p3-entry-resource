@@ -54,8 +54,11 @@
 	        Sparql Endpoint: {{fp3:sparqlEndpoint}}<br />
 	        LDP Root: {{fp3:ldpRoot}}<br />
 	        {{#+fp3:userInteractionRequestRegistry}}
-	        	User Interaction Request Registry: {{fp3:userInteractionRequestRegistry}}
+	        	User Interaction Request Registry: {{fp3:userInteractionRequestRegistry}}<br/>
 	        {{/+fp3:userInteractionRequestRegistry}}
+	        {{#+dct:created}}
+	        	This instance was created at: {{dct:created}}<br/>
+	        {{/+dct:created}}
 	        '''
 	];
 	r2h:before <ldpc>.
