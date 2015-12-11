@@ -39,21 +39,30 @@ class ResourceRenderlet extends SRenderlet {
             <title>Fusepool P3 Platform</title>
 						<link rel="stylesheet" type="text/css" href="/style/platform.css" />
             <link rel="matchers" href="/rdf2h/matchers.ttl" type="text/turtle" />
-						<link rel="matchers" href="/rdf2h/platform-matchers.ttl" type="text/turtle" />
-						<link rel="matchers" href="https://rawgit.com/rdf2h/rdf2h.github.io/master/2015/rdf2h-points.ttl" type="text/turtle" />
-            <script src="/js/ld2h/js/libs/rdf2h/rdf2h.js"></script>
-            <script src="/js/ld2h/js/libs/jquery/jquery.min.js"></script>
-            <script src="/js/ld2h/js/ld2h.js"></script>
-						<script src="/js/rdfstore/rdfstore.js"></script>
-						<script src="/js/p3-platform-js/p3-platform-js.js"></script>
-						<script src="/js/PlatformEntryConfigurator.js"></script>
-						{
-						  for (script <- bootScripts.scriptList.sorted) yield {
-						    <script src={ "js/boot-scripts/"+script }></script>
-						    
-						  }
-						}
-						<script src="/js/entry.js"></script>
+            <link rel="matchers" href="/rdf2h/platform-matchers.ttl" type="text/turtle"/>
+            <link rel="matchers" href="//cdn.rawgit.com/rdf2h/rdf2h.github.io/v0.0.1/2015/rdf2h-points.ttl" type="text/turtle"/>
+            <script src="//cdn.rawgit.com/rdf2h/rdf2h/v0.1.1/dist/rdf-ext.js"></script>
+            <script src="//cdn.rawgit.com/rdf2h/rdf2h/v0.2.0/dist/rdf2h.js"></script>
+            <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script src="//cdn.rawgit.com/rdf2h/ld2h/v0.2.0/dist/ld2h.js"></script>
+            <script src="//cdn.rawgit.com/retog/rdf-store-ldp-browser/v0.3.0-rc2f/dist/rdf-store-ldp.js"></script>
+            <script src="//cdn.rawgit.com/retog/clownface-browser/v0.3.0-rc2/dist/clownface.js"></script>
+            <script>
+              <!-- limited backward compatibility with rdf-ext 0.2 for p3-platform-js -->
+              rdf.parseTurtle = function(turtle, callback) {{
+							  LdpStore.parsers.findParsers("text/turtle")[0].parse(turtle, callback)
+							}}
+							rdf.cf = Clownface
+            </script>
+            <script src="/js/p3-platform-js/p3-platform-js.js"></script>
+            <script src="/js/PlatformEntryConfigurator.js"></script>
+            {
+              for (script <- bootScripts.scriptList.sorted) yield {
+                <script src={ "js/boot-scripts/" + script }></script>
+
+              }
+            }
+            <script src="/js/entry.js"></script>
           </head>
           <body>
 				<div id="wait">

@@ -1,8 +1,8 @@
 $(function() {
-	var store = new rdf.LdpStore({
-		parsers : {
-			'text/turtle' : rdf.parseTurtle
-		}
+	var store = new LdpStore({
+		parsers : new LdpStore.ParserUtil({
+			'text/turtle' : LdpStore.parsers.findParsers("text/turtle")[0]
+		})
 	});
 	LD2h.store = store;
 	var configurator = new PlatformEntryConfigurator(window.location);

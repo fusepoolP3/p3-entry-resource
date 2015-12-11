@@ -151,7 +151,7 @@ P3BackendConfigurator.prototype.unconditionedInitialize = function() {
 			registrations.push(self.registerApplications(ldpRoot));
 			var platformPreparation = Promise.all(registrations);
 			return platformPreparation.then(function() {
-				return P3Platform.getPlatform(window.location).then(function(platform) {
+				return P3Platform.getPlatform(window.location.toString()).then(function(platform) {
 					self.platformEntryConfigurator.lock();
 					return self.registerTransfomersAndFactories(platform);
 				});
