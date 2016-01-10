@@ -33,12 +33,7 @@
             	<h3>Applications</h3>
             	<p>P3 apps are applications that use the functionality provided by a P3 platform.</p>
             	<ul>
-		        {{#fp3:app}}
-		        	 
-		        	<li><div><h4><a href="{{dct:subject}}">{{rdfs:label}}</a></h4>
-		        	<div>{{{dct:description}}}</div>
-		        	Application URI: {{dct:subject}}</div></li>
-	            {{/fp3:app}}
+            	{{{:continue}}}
 	            </ul>
             {{/+fp3:app}}
 	        <h3>Registered Transformer Factory UIs</h3>
@@ -61,8 +56,44 @@
 	        {{/+dct:created}}
 	        '''
 	];
-	r2h:before <ldpc>.
-
+	r2h:before <sortedApps>.
+	
+<sortedApps>  a r2h:Matcher ;
+    r2h:triplePattern [    
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object fp3:Platform;
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:javaScript '''function(n) {
+            var result = "";
+            var apps = n.graphNode.out(RDF2h.resolveCurie("fp3:app")).toArray();
+            apps.sort(function(a,b) {
+                var label = RDF2h.resolveCurie("rdfs:label");
+                return a.out(label).toString().localeCompare(b.out(label).toString());
+            });
+            apps.forEach(function(c) {
+                result += "<li>"+n.rdf2h.render(n.graph, c.nodes()[0], n.context)+"</li>";
+            });
+            return result;
+        }''';        
+    ];
+    r2h:before <ldpc>.
+    
+<app>  a r2h:Matcher ;
+    r2h:triplePattern [    
+        r2h:predicate fp3:app;
+        r2h:object r2h:this;
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:mustache '''<div><h4><a href="{{dct:subject}}">{{rdfs:label}}</a></h4>
+                    <div>{{{dct:description}}}</div>
+                    Application URI: {{dct:subject}}</div>''';     
+    ];
+    r2h:before <ldpc>.
+    
 <tfr> a r2h:Matcher ;
     r2h:triplePattern [    
         r2h:subject r2h:this;
