@@ -127,11 +127,18 @@ Supported Output Formats:<br/>
     ];
     r2h:template [ 
         r2h:context r2h:Default;
-        r2h:mustache '''	
-<ul>
-{{#ldp:contains}}
-<li resource="{{.}}" class="fetch">element of container</li>
-{{/ldp:contains}}
-</ul>'''
-];
-r2h:before r2hp:specific.
+        r2h:javaScript '''function(n) {
+            //Sorting by the URI of the entries to ensure a stable order
+            var result = "<ul>";
+            var contained = n.graphNode.out(RDF2h.resolveCurie("ldp:contains")).toArray();
+            contained.sort(function(a,b) {
+                return a.toString().localeCompare(b.toString());
+            });
+            contained.forEach(function(c) {
+                result += '<li resource="'+c.toString()+'" class="fetch">AAAA</li>'
+            });
+            result += "</ul>";
+            return result;
+        }''';        
+    ];
+    r2h:before r2hp:specific.
