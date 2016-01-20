@@ -7,3 +7,4 @@ RemoteSystemsTempFiles
 .cache-*
 build
 .nb-gradle/
+/target/
