@@ -1,0 +1,175 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
+@prefix r2hp: <http://rdf2h.github.io/2015/rdf2h-points#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix s: <http://schema.org/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fp3: <http://vocab.fusepool.info/fp3#>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix tfr: <http://vocab.fusepool.info/tfrldpc#>.
+@prefix tr: <http://vocab.fusepool.info/trldpc#>.
+@prefix trans: <http://vocab.fusepool.info/transformer#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+ 
+<platformConfig> a r2h:Matcher ;
+	r2h:triplePattern [    
+    	r2h:subject r2h:this;
+    	r2h:predicate rdf:type;
+    	r2h:object fp3:Platform;
+	];
+	r2h:template [ 
+	    r2h:context r2h:Default;
+	    r2h:mustache '''
+	    	<img id="mainLogo" src="/images/fusepool-logo-p3.png" alt="Fusepool P3" />
+	        <h1>{{dc:title}} (P3 Platform)</h1>
+	        URI: {{.}}<br/>
+	        {{#fp3:dashboard}}
+	        <p>Check out the <a href="{{.}}">Dashboard</a> which allows access
+                to most of the functionality of the P3 Platform.</p>
+            <div class="promoted"><a href="{{.}}">Go to the dashboard</a></div>
+            {{/fp3:dashboard}}
+            {{#+fp3:app}}
+            	<h3>Applications</h3>
+            	<p>P3 apps are applications that use the functionality provided by a P3 platform.</p>
+            	<ul>
+            	{{{:continue}}}
+	            </ul>
+            {{/+fp3:app}}
+	        <h3>Registered Transformer Factory UIs</h3>
+	        {{#fp3:transformerFactoryRegistry}}
+	    	    Transformer Factory Registry: {{.}}<br />
+		        <div resource="{{.}}" class="fetch">tfr</div>
+	        {{/fp3:transformerFactoryRegistry}}
+	        {{#fp3:transformerRegistry}}
+		        <h3>Registered Transformers</h3>
+	        	Transformer Registry: {{.}}<br />
+	        	<div resource="{{.}}" class="fetch">tfr</div>
+	        {{/fp3:transformerRegistry}}
+	        Sparql Endpoint: {{fp3:sparqlEndpoint}}<br />
+	        LDP Root: {{fp3:ldpRoot}}<br />
+	        {{#+fp3:userInteractionRequestRegistry}}
+	        	User Interaction Request Registry: {{fp3:userInteractionRequestRegistry}}<br/>
+	        {{/+fp3:userInteractionRequestRegistry}}
+	        {{#+dct:created}}
+	        	This instance was created at: {{dct:created}}<br/>
+	        {{/+dct:created}}
+	        '''
+	];
+	r2h:before <sortedApps>.
+	
+<sortedApps>  a r2h:Matcher ;
+    r2h:triplePattern [    
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object fp3:Platform;
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:javaScript '''function(n) {
+            var result = "";
+            var apps = n.graphNode.out(RDF2h.resolveCurie("fp3:app")).toArray();
+            apps.sort(function(a,b) {
+                var label = RDF2h.resolveCurie("rdfs:label");
+                return a.out(label).toString().localeCompare(b.out(label).toString());
+            });
+            apps.forEach(function(c) {
+                result += "<li>"+n.rdf2h.render(n.graph, c.nodes()[0], n.context)+"</li>";
+            });
+            return result;
+        }''';        
+    ];
+    r2h:before <ldpc>.
+    
+<app>  a r2h:Matcher ;
+    r2h:triplePattern [    
+        r2h:predicate fp3:app;
+        r2h:object r2h:this;
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:mustache '''<div><h4><a href="{{dct:subject}}">{{rdfs:label}}</a></h4>
+                    <div>{{{dct:description}}}</div>
+                    Application URI: {{dct:subject}}</div>''';     
+    ];
+    r2h:before <ldpc>.
+    
+<tfr> a r2h:Matcher ;
+    r2h:triplePattern [    
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object tfr:TransformerFactoryRegistration
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:mustache '''
+
+<h4>{{dct:title}}</h4>
+<p>URI: <a href="{{tfr:transformerFactory}}">{{tfr:transformerFactory}}</a></p>
+<p>{{dct:description}}</p>'''
+                ];
+                r2h:before <ldpc>.
+                        
+            <tr> a r2h:Matcher ;
+                r2h:triplePattern [    
+                    r2h:subject r2h:this;
+                    r2h:predicate rdf:type;
+                    r2h:object tr:TransformerRegistration
+                ];
+                r2h:template [ 
+                    r2h:context r2h:Default;
+                    r2h:mustache '''
+
+<h4>{{dct:title}}</h4>
+<p>URI: <a href="{{tr:transformer}}">{{tr:transformer}}</a></p>
+<p>{{dct:description}}</p>
+<div class="fetch" resource="{{tr:transformer}}"></div>'''
+                ];
+                r2h:before <ldpc>.
+                        
+            <transformer> a r2h:Matcher ;
+                r2h:triplePattern [    
+                    r2h:subject r2h:this;
+                    r2h:predicate trans:supportedInputFormat;
+                ];
+                r2h:template [ 
+                    r2h:context r2h:Default;
+                    r2h:mustache '''
+Supported Input Formats:<br/>
+<ul>
+{{#trans:supportedInputFormat}}
+<li>{{.}}</li>
+{{/trans:supportedInputFormat}}
+</ul>
+Supported Output Formats:<br/>
+<ul>
+{{#trans:supportedOutputFormat}}
+<li>{{.}}</li>
+{{/trans:supportedOutputFormat}}
+</ul>'''
+    ];
+    r2h:before <tr>.                        
+            
+<ldpc> a r2h:Matcher ;
+    r2h:triplePattern [    
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object ldp:BasicContainer
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:javaScript '''function(n) {
+            //Sorting by the URI of the entries to ensure a stable order
+            var result = "<ul>";
+            var contained = n.graphNode.out(RDF2h.resolveCurie("ldp:contains")).toArray();
+            contained.sort(function(a,b) {
+                return a.toString().localeCompare(b.toString());
+            });
+            contained.forEach(function(c) {
+                result += '<li resource="'+c.toString()+'" class="fetch">AAAA</li>'
+            });
+            result += "</ul>";
+            return result;
+        }''';        
+    ];
+    r2h:before r2hp:specific.

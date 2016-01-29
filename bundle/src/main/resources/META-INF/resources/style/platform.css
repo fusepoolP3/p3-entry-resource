@@ -1,0 +1,15 @@
+.promoted {
+	background-color: yellow;
+	border: thick;
+	border-style: solid;
+	border-color: red;
+	margin: 2mm;
+	padding: 5mm;
+	font-family: sans-serif;
+	font-size: large;
+}
+
+#mainLogo {
+	width: 80%;
+	max-width: 60em;
+}
