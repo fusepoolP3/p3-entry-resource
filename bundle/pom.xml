@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>eu.fusepool.p3</groupId>
-    <artifactId>entry</artifactId>
+    <groupId>eu.fusepool.p3.entry</groupId>
+    <artifactId>bundle</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Fusepool P3 Platform: Entry</name>
+    <name>Fusepool P3 Platform: Entry - Bundle</name>
     <dependencies>     
         <dependency>
             <groupId>org.scala-lang</groupId>
@@ -67,8 +67,8 @@
         <!-- the depenencies needed only at compile time -->
         <dependency>
             <groupId>org.osgi</groupId>
-            <artifactId>osgi.cmpn</artifactId>
-            <version>6.0.0</version>
+            <artifactId>org.osgi.compendium</artifactId>
+            <version>4.3.1</version>
             <scope>provided</scope>
         </dependency>
         <!-- the dependencies needed at runtime -->
@@ -88,14 +88,6 @@
             <groupId>com.eclipsesource.jaxrs</groupId>
             <artifactId>publisher</artifactId>
             <version>5.1</version>
-            <scope>runtime</scope>
-        </dependency>
-        <!-- here we're being lazy, we just depend onthe other example rather 
-        than including all the dependencies for the http service -->
-        <dependency>
-            <groupId>org.wymiwyg.simple-osgi-launcher</groupId>
-            <artifactId>servlet-example</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
@@ -134,18 +126,6 @@
                     <execution>
                         <id>default-testCompile</id>
                         <phase>none</phase>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.wymiwyg.simple-osgi-launcher</groupId>
-                <artifactId>osgi-launcher-maven-plugin</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>create-launcher</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>

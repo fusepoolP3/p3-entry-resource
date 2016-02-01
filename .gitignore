@@ -8,3 +8,7 @@ RemoteSystemsTempFiles
 build
 .nb-gradle/
 /target/
+/bundle/target/
+/launcher/target/
+/bundlelist/target/
+dependency-reduced-pom.xml
