@@ -16,8 +16,20 @@ import eu.fusepool.p3.vocab.FP3
 @Component(service = Array(classOf[TypeRenderlet]))
 class ResourceRenderlet extends SRenderlet {
   
-  @Reference
-  var bootScripts: BootScripts = null 
+  var bootScripts: BootScripts = null
+  
+  @Reference(
+    cardinality = ReferenceCardinality.MANDATORY,
+    policy = ReferencePolicy.STATIC,
+    unbind = "unsetBootScripts"
+  )
+  def setBootScripts(tcManager: BootScripts) {
+    this.bootScripts = tcManager;
+  }
+
+  def unsetBootScripts(tcManager: BootScripts) {
+    this.bootScripts = null;
+  }
 
   val getRdfType = FP3.Platform
 
