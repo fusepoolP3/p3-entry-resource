@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-pax-run</actionName>
+            <displayName>pax-run</displayName>
+            <goals>
+                <goal>org.ops4j:maven-pax-plugin:run</goal>
+            </goals>
+        </action>
+    </actions>
