@@ -138,7 +138,7 @@ P3BackendConfigurator.prototype.registerTransfomersAndFactories = function(platf
         platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
 	    "http://"+this.serviceHost+":8389/?transformerBase=http://"+this.serviceHost+":8310&platformURI="+window.location, "OpenRefine UI", "Allows to create Batchrefine transformers using OpenRefine UI."));
         platformRegsitrations.push(platform.transformerFactoryRegistry.registerTransformerFactory(
-	    "http://"+this.serviceHost+":8206/?transformerBase=http://"+this.serviceHost+":8305&platformURI="+window.location, "Literal Extraction Transformer UI", "Configures a Transformer that allows to extract information from RDF Literals."));
+	    "http://"+this.serviceHost+":8206/?transformerBase=http://"+this.serviceHost+":8305/&platformURI="+window.location, "Literal Extraction Transformer UI", "Configures a Transformer that allows to extract information from RDF Literals."));
         return Promise.all(platformRegsitrations);
 }
 
