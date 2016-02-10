@@ -27,7 +27,12 @@
         <maven>3.0.2</maven>
     </prerequisites>
     
+    <properties>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+    </properties>
+
     <build>
+        <finalName>${finalName}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

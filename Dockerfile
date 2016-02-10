@@ -1,4 +1,4 @@
-FROM niaquinto/gradle
+FROM maven:3.2-jdk-8
 MAINTAINER Reto Gmür <me@farewellutopia.com>
 
 #Prepare
@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # Build
 COPY ./ /usr/src/app
 
-RUN gradle build export
+RUN mvn install -DfinalName=p3-entry-launcher
 
 ENTRYPOINT ["java"]
-CMD ["-jar", "entry/generated/distributions/executable/launch.jar"]
+CMD ["-jar", "launcher/target/p3-entry-launcher.jar"]
