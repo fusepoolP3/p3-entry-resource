@@ -78,27 +78,16 @@ To use the version from dockerhub
 
     docker run --rm -ti -p 80:8080 fusepoolp3/entry-resource
     
-### Eclipse
+### Maven
 
-The projects comes with eclipse configuration files so that they can be used with [bndtools](http://bndtools.org/). Just import both project into an empty eclipse workspace. As it is written in Scala you also need the [Scala IDE Plugin](http://scala-ide.org/).
+You can also build with maven:
 
- * Note that you cannot clone the project out of eclipse, as it is not an eclipse project but an eclipse workspace
- * Install the bndtools befotre opening the workspace
+    mvn install
 
-### Gradle
-
-You can also build with gradle:
-
-    gradle build
-    
-And create an executable jar:
-
-    gradle export
-
-You'll find the exectuable jar at ./entry/generated/distributions/executable/launch.jar.
+This creates an executable jar `launcher/target`.
 
 Execute with:
 
-    java -jar ./entry/generated/distributions/executable/launch.jar
+    java -jar launcher/target/launcher-*.jar"
 
 
