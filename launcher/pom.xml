@@ -234,12 +234,6 @@
             <type>partialbundlelist</type>
         </dependency>
 		
-        <dependency>
-            <groupId>org.apache.clerezza.provisioning</groupId>
-            <artifactId>rdf.tdb</artifactId>
-            <version>1.1.0</version>
-            <type>partialbundlelist</type>
-        </dependency>
 		 
         <dependency>
             <groupId>org.apache.clerezza.provisioning</groupId>
