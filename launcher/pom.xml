@@ -265,12 +265,12 @@
             <version>1.0.1</version>
             <type>partialbundlelist</type>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>org.apache.clerezza.provisioning</groupId>
             <artifactId>platform.content</artifactId>
             <version>1.0.0</version>
             <type>partialbundlelist</type>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>eu.fusepool.p3.entry</groupId>
             <artifactId>bundlelist</artifactId>

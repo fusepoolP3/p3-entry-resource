@@ -40,6 +40,16 @@
             <artifactId>vocab</artifactId>
             <version>1.2.0</version>
         </dependency>   
+        <dependency>
+            <groupId>org.apache.stanbol</groupId>
+            <artifactId>org.apache.stanbol.commons.web.resources</artifactId>
+            <version>0.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.clerezza</groupId>
+            <artifactId>platform.xhtml2html</artifactId>
+            <version>0.6</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -67,7 +77,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <startLevel>25</startLevel>
+                    <!-- setting early startlevel as the scr version compatibel 
+                    with sling launcher doesn't inject late components -->
+                    <startLevel>20</startLevel>
                     <aggregateFeatures>true</aggregateFeatures>
                     <resolver>(obr)</resolver>
                     <checkDependencyChange>false</checkDependencyChange>
