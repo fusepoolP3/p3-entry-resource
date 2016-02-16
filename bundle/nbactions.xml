@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-install local</actionName>
+            <displayName>install local</displayName>
+            <goals>
+                <goal>install</goal>
+                <goal>org.apache.sling:maven-sling-plugin:install</goal>
+            </goals>
+        </action>
+    </actions>
