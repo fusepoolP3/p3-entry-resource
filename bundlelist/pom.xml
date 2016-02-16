@@ -50,6 +50,11 @@
             <artifactId>platform.xhtml2html</artifactId>
             <version>0.6</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.clerezza.commons-rdf</groupId>
+            <artifactId>commons-rdf-impl-sparql</artifactId>
+            <version>0.2</version>
+        </dependency>
     </dependencies>
 
     <build>
