@@ -91,3 +91,19 @@ Execute with:
     java -jar launcher/target/launcher-*.jar"
 
 
+## Experimental features
+
+To allow access to additional resources via the provided HTTP 
+endpoint either create a file `~/.fusepool-p3/content-graph.ttl`
+with the data to be provided, or link to a SPARQL endpoint using 
+a file `~/.fusepool-p3/remote-content-graph.ttl`similar to the following (Ontology will change soon):
+
+    <http://test.lindas-data.ch/sparql>
+            a       <http://sparql.endpont/> ;
+            <http://example.org/replacement> [
+    		<http://example.org/targetPrefix> "http://localhost:8080/";	
+    		<http://example.org/sourcePrefix> "http://test.lindas-data.ch/"
+    	] .
+
+
+
