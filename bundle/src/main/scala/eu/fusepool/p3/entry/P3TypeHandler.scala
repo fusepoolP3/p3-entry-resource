@@ -40,8 +40,8 @@ class P3TypeHandler {
   @GET
   def get(@Context uriInfo: UriInfo) = {
     val iri : IRI = new IRI(uriInfo.getAbsolutePath().toString());
-    println("Getting: "+iri)
-    gnp.getLocal(iri)
+    val result = gnp.getLocal(iri)
+    result
   }
   
 }

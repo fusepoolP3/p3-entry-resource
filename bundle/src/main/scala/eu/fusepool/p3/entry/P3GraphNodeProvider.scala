@@ -4,10 +4,14 @@ import java.io.File
 import java.io.FileInputStream
 import org.apache.clerezza.commons.rdf.Graph
 import org.apache.clerezza.commons.rdf.IRI
+import org.apache.clerezza.commons.rdf.Literal
+import org.apache.clerezza.commons.rdf.impl.sparql.SparqlGraph
 import org.apache.clerezza.commons.rdf.impl.utils.simple.SimpleGraph
 import org.apache.clerezza.rdf.ontologies.DC
+import org.apache.clerezza.rdf.ontologies.RDF
 import org.apache.clerezza.rdf.ontologies.RDFS
 import org.apache.clerezza.rdf.scala.utils.EzGraph
+import org.apache.clerezza.rdf.scala.utils.Preamble
 import org.apache.clerezza.rdf.utils.GraphNode
 import org.apache.clerezza.rdf.utils.graphnodeprovider.GraphNodeProvider
 import org.apache.clerezza.rdf.core.serializedform.SupportedFormat
@@ -18,8 +22,8 @@ import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.Reference
 import org.osgi.service.component.annotations.ReferenceCardinality
 import org.osgi.service.component.annotations.ReferencePolicy
-//remove if not needed
-import scala.collection.JavaConversions._
+import scala.collection.mutable.Set
+import scala.util.matching.Regex
 
 @Component(service = Array(classOf[GraphNodeProvider]), immediate = true)
 class P3GraphNodeProvider extends GraphNodeProvider {
@@ -31,6 +35,12 @@ class P3GraphNodeProvider extends GraphNodeProvider {
     };
     
   var parser: Parser = null
+  
+  class Replacement(val regex: Regex, val newValue: String) {
+    
+  }
+  
+  val replacements: Set[Replacement] = Set()
   
   @Reference(
     cardinality = ReferenceCardinality.MANDATORY,
@@ -46,16 +56,35 @@ class P3GraphNodeProvider extends GraphNodeProvider {
   }
   
   @Activate
-  def activate(context: ComponentContext) = {
-    /*val cgFile = ConfigDirProvider.configDir.getSubPath("content-graph.ttl")
-    if (cgFile.exists) {
-      println("*********** using content-graph.ttl file");
-      parser.parse(cgFile.getInputStream, SupportedFormat.TURTLE)
-    }*/
+  def activate(context: ComponentContext) {
+    val cgRemoteFile = ConfigDirProvider.configDir.getSubPath("remote-content-graph.ttl")
+    if (cgRemoteFile.exists) {
+      val locationG = parser.parse(cgRemoteFile.getInputStream, SupportedFormat.TURTLE)
+      val p = new Preamble(locationG)
+      import p._
+      val endpoint = "http://sparql.endpont/".iri/-RDF.`type`
+      println("******* + endpoint "+endpoint)
+      g = new SparqlGraph(endpoint.getNode.asInstanceOf[IRI].getUnicodeString)
+      val replacementNodes = endpoint/"http://example.org/replacement".iri
+      println("***** length "+replacementNodes.length)
+      replacements.clear();
+      for (r <- replacementNodes) {
+        val regex = new Regex(r/"http://example.org/regex".iri*)
+        println(regex)
+        val newValue = (r/"http://example.org/newValue".iri*)
+        println(newValue)
+        replacements += new Replacement(regex, newValue)
+      }
+    } else {
+      val cgFile = ConfigDirProvider.configDir.getSubPath("content-graph.ttl")
+      if (cgFile.exists) {
+        g = parser.parse(cgFile.getInputStream, SupportedFormat.TURTLE)
+      }
+    }
   }
   
   override def existsLocal(iri: IRI): Boolean = {
-    !new GraphNode(iri, g).getNodeContext.isEmpty
+    !getLocal(iri).getNodeContext.isEmpty
   }
 
   override def get(iri: IRI): GraphNode = {
@@ -63,6 +92,12 @@ class P3GraphNodeProvider extends GraphNodeProvider {
   }
 
   override def getLocal(iri: IRI): GraphNode = {
-    new GraphNode(iri, g)
+    println("******* + "+iri)
+    var iriString = iri.getUnicodeString
+    for (r <- replacements) {
+      iriString = r.regex replaceFirstIn(iriString, r.newValue)
+    }
+    println("******* +  new: "+iriString)
+    new GraphNode(new IRI(iriString), g)
   }
 }
