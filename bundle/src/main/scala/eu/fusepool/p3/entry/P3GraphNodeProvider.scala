@@ -13,6 +13,7 @@ import org.apache.clerezza.rdf.ontologies.RDFS
 import org.apache.clerezza.rdf.scala.utils.EzGraph
 import org.apache.clerezza.rdf.scala.utils.Preamble
 import org.apache.clerezza.rdf.utils.GraphNode
+import org.apache.clerezza.rdf.utils.UriMutatingGraph
 import org.apache.clerezza.rdf.utils.graphnodeprovider.GraphNodeProvider
 import org.apache.clerezza.rdf.core.serializedform.SupportedFormat
 import org.apache.clerezza.rdf.core.serializedform.Parser
@@ -22,8 +23,7 @@ import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.Reference
 import org.osgi.service.component.annotations.ReferenceCardinality
 import org.osgi.service.component.annotations.ReferencePolicy
-import scala.collection.mutable.Set
-import scala.util.matching.Regex
+
 
 @Component(service = Array(classOf[GraphNodeProvider]), immediate = true)
 class P3GraphNodeProvider extends GraphNodeProvider {
@@ -35,12 +35,7 @@ class P3GraphNodeProvider extends GraphNodeProvider {
     };
     
   var parser: Parser = null
-  
-  class Replacement(val regex: Regex, val newValue: String) {
-    
-  }
-  
-  val replacements: Set[Replacement] = Set()
+
   
   @Reference(
     cardinality = ReferenceCardinality.MANDATORY,
@@ -63,17 +58,15 @@ class P3GraphNodeProvider extends GraphNodeProvider {
       val p = new Preamble(locationG)
       import p._
       val endpoint = "http://sparql.endpont/".iri/-RDF.`type`
-      println("******* + endpoint "+endpoint)
       g = new SparqlGraph(endpoint.getNode.asInstanceOf[IRI].getUnicodeString)
       val replacementNodes = endpoint/"http://example.org/replacement".iri
-      println("***** length "+replacementNodes.length)
-      replacements.clear();
+      if (replacementNodes.length > 1) {
+        throw new RuntimeException("Multiple prefix-mapping not yet supported")
+      }
       for (r <- replacementNodes) {
-        val regex = new Regex(r/"http://example.org/regex".iri*)
-        println(regex)
-        val newValue = (r/"http://example.org/newValue".iri*)
-        println(newValue)
-        replacements += new Replacement(regex, newValue)
+        val sourcePrefix = (r/"http://example.org/sourcePrefix".iri*)
+        val targetPrefix = (r/"http://example.org/targetPrefix".iri*)
+        g = new UriMutatingGraph(g, sourcePrefix, targetPrefix)
       }
     } else {
       val cgFile = ConfigDirProvider.configDir.getSubPath("content-graph.ttl")
@@ -92,12 +85,6 @@ class P3GraphNodeProvider extends GraphNodeProvider {
   }
 
   override def getLocal(iri: IRI): GraphNode = {
-    println("******* + "+iri)
-    var iriString = iri.getUnicodeString
-    for (r <- replacements) {
-      iriString = r.regex replaceFirstIn(iriString, r.newValue)
-    }
-    println("******* +  new: "+iriString)
-    new GraphNode(new IRI(iriString), g)
+    new GraphNode(iri, g)
   }
 }
