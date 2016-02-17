@@ -1,0 +1,5 @@
+Fusepool P3 Launcher
+Copyright 2015 Bern University of Applied Science
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
