@@ -117,7 +117,7 @@ P3BackendConfigurator.prototype.registerApplications = function(ldpRoot) {
 			"P3 Resource GUI",
 			"This is a graphical user interface to deal with Linked-Data-Platform-Collections."));
 
-        registrations.push(this.platformEntryConfigurator.registerApplication("http://"+this.serviceHost+":8387/,
+        registrations.push(this.platformEntryConfigurator.registerApplication("http://"+this.serviceHost+":8387/",
 			"Kibana - Log analysis",
 			"Analyze the logs with Kibana."));
 
