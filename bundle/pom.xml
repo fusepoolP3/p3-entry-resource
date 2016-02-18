@@ -166,12 +166,13 @@
                 <version>2.5.4</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <Embed-Dependency>cors-filter</Embed-Dependency>
                     <instructions>
                         <Import-Package>org.osgi.*; version="[1,2)",javax.ws.rs.*; version="[1,3)",
                             org.apache.stanbol.commons.security.*; version="[0,3)",
                             com.google.common.*; version="[14.0.0,18.0.0)", org.slf4j.*;version="[1.5,2)", *</Import-Package>
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+                        <Embed-Dependency>*;groupId=com.thetransactioncompany</Embed-Dependency>
+                        <Embed-Transitive>true</Embed-Transitive>
                     </instructions>
                 </configuration>
                 <!-- <configuration>
