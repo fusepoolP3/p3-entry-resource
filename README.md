@@ -88,7 +88,7 @@ This creates an executable jar `launcher/target`.
 
 Execute with:
 
-    java -jar launcher/target/launcher-*.jar"
+    java -jar launcher/target/launcher-*.jar
 
 
 ## Experimental features
